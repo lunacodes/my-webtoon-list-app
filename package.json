@@ -2,9 +2,9 @@
   "name": "mwl-server",
   "version": "1.0.0",
   "description": "My Webtoon List app server",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "cd server && node server.js",
     "build": "cd client && npm install && npm run build",
     "engines": "16.13.1",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,6 +15,9 @@
   "license": "ISC",
   "dependencies": {
     "axios": "^0.26.1",
-    "express": "^4.17.3"
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "mongodb": "^4.4.1"
   }
 }
