@@ -15,6 +15,19 @@ Demo: <https://my-webtoon-list.herokuapp.com/>
 * Database: MongoDB
 The app is pulling information from the Unofficial
 
+## Running the Server
+
+### Connecting to MongoDB
+
+Note: `config.env` must be present in the `/server` directory, and should be formatted as:
+
+```
+ATLAS_URI=mongodb+srv://<username>:<pass>@<your-cluster-url>/<db_name>?retryWrites=true&w=majority
+PORT=5000
+```
+
+See MongoDB's [Quick Start: Connect to a MongoDB Database Using Node.js](https://www.mongodb.com/blog/post/quick-start-nodejs-mongodb-how-to-get-connected-to-your-database) tutorial for more info
+
 ## Issues
 
 * Images don't display yet
