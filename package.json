@@ -1,7 +1,7 @@
 {
-  "name": "mwl-server",
+  "name": "my-webtoon-list-app",
   "version": "1.0.0",
-  "description": "My Webtoon List app server",
+  "description": "An app for keeping track of one's webtoons. Inspired by <https://myanimelist.net/>.",
   "main": "server/server.js",
   "scripts": {
     "start": "cd server && node server.js",
@@ -10,6 +10,11 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "proxy": "http://localhost:3001",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lunacodes/my-webtoon-list-app.git"
+  },
+  "homepage": "https://github.com/lunacodes/my-webtoon-list-app#readme",
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -21,3 +26,4 @@
     "mongodb": "^4.4.1"
   }
 }
+

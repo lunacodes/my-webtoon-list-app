@@ -1,46 +1,74 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router';
 
-export default function AddWebtoon() {
+export default function EditWebtoon() {
 	const [form, setForm] = useState({
 		title: "",
 		score: "",
 		progress: "",
 		tags: "",
+		webtoons: "",
 	});
+
+	const params = useParams();
 	const navigate = useNavigate();
 
-	// These methods will update the state properties.
+	useEffect(() => {
+		async function fetchData() {
+			const id = params.id.toString();
+			const response = await fetch(`http://localhost:3001/webtoon/${params.id.toString()}`);
+
+			if (! response.ok) {
+				const message = `An error has occured: {response.statusText}`;
+				window.alert(message);
+				return;
+			}
+
+			const webtoon = await response.json();
+			if (! webtoon) {
+				window.alert(`Webtoon with id ${id} not found`);
+				navigate('/');
+				return;
+			}
+
+			setForm(webtoon);
+		}
+
+		fetchData();
+		return;
+	}, [params.id, navigate]);
+
 	function updateForm(value) {
 		return setForm((prev) => {
 			return { ...prev, ...value };
 		});
 	}
 
-	// This function will handle the submission.
 	async function onSubmit(e) {
 		e.preventDefault();
+		const editedWebtoon = {
+			title: form.title,
+			score: form.score,
+			progress: form.progress,
+			tags: form.tags,
+			webtoons: form.webtoons,
+		};
 
-		// When a post request is sent to the create url, we'll add a new webtoon to the database.
-		const newWebtoon = { ...form };
-
-		await fetch("http://localhost:3001/webtoon/add", {
-			method: "POST",
+		// Send a POST request to update the data in the database
+		await fetch(`http://localhost:3001/update/${params.id}`, {
+			method: 'POST',
+			body: JSON.stringify(editedWebtoon),
 			headers: {
-				"Content-Type": "application/json",
+				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify(newWebtoon),
-		})
-		.catch(error => {
-			window.alert(error);
-			return;
 		});
 
-		setForm({ title: "", score: "", progress: "", tags: "" });
-		navigate("/");
+		navigate('/');
 	}
 
-	// This following section will display the form that takes the input from the user.
+	// Display the form that takes user input to update the data
+	// This seems to be exactly the same as the Add form, except for the title
+	// Pretty Sure this can be abstracted into /components/Form.js
 	return (
 		<div>
 			<h3>Add New Webtoon</h3>
@@ -95,4 +123,4 @@ export default function AddWebtoon() {
 			</form>
 		</div>
 	);
-}
+};

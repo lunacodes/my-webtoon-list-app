@@ -1,19 +1,22 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-
-import Navbar from './components/navbar';
-import RecordList from './components/recordList';
-import Edit from './components/edit';
-import Create from './components/create';
+import Navbar from './components/Navbar';
+import WebtoonList from './components/WebtoonList';
+import EditWebtoon from './components/EditWebtoon';
+import AddWebtoon from './components/AddWebtoon';
 
 const App = () => {
 	return (
-	<div>
-		<Navbar />
-		<Routes>
-			<Route exact path="/" element={<RecordList />} />
-		</Routes>
-	</div>
+	  <div>
+	    <Navbar />
+	    <div style={{ margin: 20 }}>
+	    <Routes>
+		    <Route exact path="/" element={<WebtoonList />} />
+		    <Route path="/edit/:id" element={<EditWebtoon />} />
+		    <Route path="/add" element={<AddWebtoon />} />
+	    </Routes>
+	    </div>
+	  </div>
 	);
 };
 

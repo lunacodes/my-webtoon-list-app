@@ -2,20 +2,11 @@
 
 An app for keeping track of one's webtoons. Inspired by <https://myanimelist.net/>.
 
-The app currently pulls data from an [unofficial Webtoon API](https://rapidapi.com/apidojo/api/webtoon/), and thus can only fetch content titles from [webtoons.com](https://webtoons.com) for the time being.
+The app is a work-in-progress, as I further develop my Node.js and React skills.
 
 Demo: <https://my-webtoon-list.herokuapp.com/>
 
-## Technical Stack
-
-* Platform: Heroku
-* Server: Node.js, Express, Axios
-* API: ATLAS, [unofficial Webtoon API](https://rapidapi.com/apidojo/api/webtoon/)
-* Front End: React
-* Database: MongoDB
-The app is pulling information from the Unofficial
-
-## Running the Server
+## Running the App
 
 ### Connecting to MongoDB
 
@@ -28,9 +19,38 @@ PORT=5000
 
 See MongoDB's [Quick Start: Connect to a MongoDB Database Using Node.js](https://www.mongodb.com/blog/post/quick-start-nodejs-mongodb-how-to-get-connected-to-your-database) tutorial for more info
 
+## To-Do
+
+* Write tests
+* Make tags functional
+* Add User Accounts & Authentication
+* Implement Search Bar via the [unofficial Webtoon API](https://rapidapi.com/apidojo/api/webtoon/) or web scraping
+* Replace MongoDB logo with text
+* Improve styles
+
+### Known Issues
+
+* Bootstrap mobile nav doesn't work
+
+## Technical Stack
+
+* Platform: Heroku
+* Server: Node.js, Express, Axios
+* API: ATLAS, [unofficial Webtoon API](https://rapidapi.com/apidojo/api/webtoon/)
+* Front End: React
+* Database: MongoDB
+The app is pulling information from the Unofficial
+
+## Tutorials Referenced
+
+* https://www.freecodecamp.org/news/react-movie-app-tutorial/
+* https://github.com/chrisblakely01/react-movie-app
+* https://www.mongodb.com/languages/mern-stack-tutorial
+* https://www.freecodecamp.org/news/how-to-create-a-react-app-with-a-node-backend-the-complete-guide/
+
 ## Issues
 
-* Images don't display yet
+### Images don't display yet
 
 From: https://rapidapi.com/apidojo/api/webtoon/tutorials/how-to-load-images
 
@@ -38,10 +58,3 @@ From: https://rapidapi.com/apidojo/api/webtoon/tutorials/how-to-load-images
 > User-Agent:Mozilla/5.0 (Linux; Android 8.1.0; Mi MIX 2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Mobile Safari/537.36
 > Referer:http://m.webtoons.com/
 
-## To-Do
-
-* Store ATLAS API key in Heroku, since it can't be committed here
-* Save information to MongoDB, instead of React state
-* Add user accounts
-* Localize API and use webscraping, instead of relying on [unofficial Webtoon API](https://rapidapi.com/apidojo/api/webtoon/)
-* Add GET Request for images
