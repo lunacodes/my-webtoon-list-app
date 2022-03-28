@@ -22,6 +22,7 @@ See MongoDB's [Quick Start: Connect to a MongoDB Database Using Node.js](https:/
 ## To-Do
 
 * Write tests
+* Make tags functional
 * Add User Accounts & Authentication
 * Implement Search Bar via the [unofficial Webtoon API](https://rapidapi.com/apidojo/api/webtoon/) or web scraping
 * Replace MongoDB logo with text

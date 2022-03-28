@@ -26,7 +26,7 @@ export default function WebtoonList() {
 	// This method fetches the webtoons from the database.
 	useEffect(() => {
 	  async function getWebtoons() {
-	    const response = await fetch(`http://localhost:5000/webtoon/`);
+	    const response = await fetch(`http://localhost:3001/webtoon/`);
 
 	    if (!response.ok) {
 	      const message = `An error occured: ${response.statusText}`;
@@ -45,7 +45,7 @@ export default function WebtoonList() {
 
   // This method will delete a webtoon
   async function deleteWebtoon(id) {
-    await fetch(`http://localhost:5000/${id}`, {
+    await fetch(`http://localhost:3001/${id}`, {
       method: "DELETE"
     });
 

@@ -24,7 +24,7 @@ export default function AddWebtoon() {
 		// When a post request is sent to the create url, we'll add a new webtoon to the database.
 		const newWebtoon = { ...form };
 
-		await fetch("http://localhost:5000/webtoon/add", {
+		await fetch("http://localhost:3001/webtoon/add", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
