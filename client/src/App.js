@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.css";
+import 'bootstrap/dist/js/bootstrap.min.js';
 import "./App.css";
 
 import Login from './components/Login/Login';
@@ -32,7 +33,7 @@ const App = () => {
 	return (
 	  <div>
 	    <Navbar />
-	    <div style={{ margin: 20 }}>
+	    <div className="container site-inner">
 	    <Routes>
 		    <Route exact path="/" element={<UserWebtoonList />} />
 		    <Route path="/profile" element={<UserWebtoonList />} />
