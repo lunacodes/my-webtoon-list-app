@@ -8,9 +8,9 @@ import UseToken from './components/Login/UseToken';
 import NotFoundPage from './components/NotFoundPage';
 
 import Navbar from './components/Navbar';
-import WebtoonList from './components/WebtoonList';
-import EditWebtoon from './components/EditWebtoon';
-import AddWebtoon from './components/AddWebtoon';
+import UserWebtoonList from './components/Webtoons/User/WebtoonList';
+import UserEditWebtoon from './components/Webtoons/User/EditWebtoon';
+import UserAddWebtoon from './components/Webtoons/User/AddWebtoon';
 
 function setToken(userToken) {
 	sessionStorage.setItem('token', JSON.stringify(userToken));
@@ -34,10 +34,10 @@ const App = () => {
 	    <Navbar />
 	    <div style={{ margin: 20 }}>
 	    <Routes>
-		    <Route exact path="/" element={<WebtoonList />} />
-		    <Route path="/profile" element={<WebtoonList />} />
-		    <Route path="/edit/:id" element={<EditWebtoon />} />
-		    <Route path="/add" element={<AddWebtoon />} />
+		    <Route exact path="/" element={<UserWebtoonList />} />
+		    <Route path="/profile" element={<UserWebtoonList />} />
+		    <Route path="/edit/:id" element={<UserEditWebtoon />} />
+		    <Route path="/add" element={<UserAddWebtoon />} />
 		    <Route path="*" element={<NotFoundPage />} />
 	    </Routes>
 	    </div>

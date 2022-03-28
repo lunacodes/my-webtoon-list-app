@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import WebtoonListHeading from '../WebtoonListHeading';
 
 const Webtoon = (props) => (
   <tr>
@@ -20,7 +21,7 @@ const Webtoon = (props) => (
   </tr>
 );
 
-export default function WebtoonList() {
+export default function UserWebtoonList() {
 	const [webtoons, setWebtoons] = useState([]);
 
 	// This method fetches the webtoons from the database.
@@ -69,7 +70,7 @@ export default function WebtoonList() {
   // This following section will display the table with the webtoons of individuals.
   return (
     <div>
-      <h3>Webtoon List</h3>
+    	<WebtoonListHeading heading="Webtoon List" />
       <table className="table table-striped" style={{ marginTop: 20 }}>
         <thead>
           <tr>
