@@ -5,6 +5,7 @@ const login = express();
 const cors = require('cors');
 require('dotenv').config({ path: './config.env'});
 const PORT = process.env.PORT || 3001;
+const LOGIN_PORT = process.env.port || 8080;
 const session_token = process.env.TOKEN;
 
 // Login Service
@@ -15,7 +16,7 @@ login.use('/login', (req, res) => {
 	});
 });
 
-login.listen(8080, () => {
+login.listen(LOGIN_PORT, () => {
 	console.log('Login is running on port 8080');
 })
 
