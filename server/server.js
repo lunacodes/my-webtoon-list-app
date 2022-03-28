@@ -1,10 +1,25 @@
 const path = require('path');
 const express = require('express');
 const app = express();
+const login = express();
 const cors = require('cors');
 require('dotenv').config({ path: './config.env'});
 const PORT = process.env.PORT || 3001;
+const session_token = process.env.TOKEN;
 
+// Login Service
+login.use(cors());
+login.use('/login', (req, res) => {
+	res.send({
+		token: session_token
+	});
+});
+
+login.listen(8080, () => {
+	console.log('Login is running on port 8080');
+})
+
+// Main React App
 app.use(cors());
 app.use(express.json());
 app.use(require('./routes/webtoon'));
@@ -31,3 +46,4 @@ app.listen(PORT, () => {
 	});
 	console.log(`Server is running on port ${PORT}`);
 });
+
