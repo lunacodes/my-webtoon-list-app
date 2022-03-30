@@ -10,6 +10,8 @@ Demo: <https://my-webtoon-list.herokuapp.com/>
 
 ### Connecting to MongoDB
 
+https://dashboard.heroku.com/apps/my-webtoon-list/settings
+
 Note: `config.env` must be present in the `/server` directory, and should be formatted as:
 
 ```
@@ -21,12 +23,17 @@ See MongoDB's [Quick Start: Connect to a MongoDB Database Using Node.js](https:/
 
 ## To-Do
 
+* Major Issue: Async promise issue w/ gallery & overloading API requests... problem is it's submitting rerquests right away, before there's any search query... even when it doesn't it polls too much
 * Write tests
 * Make tags functional
+* Make it clear that the Add/Remove Gallery components are for adding it to the site's overall info... that sounds like info management hell
+* Put Webtoons into broader database somehow?
 * Add User Accounts & Authentication
 * Implement Search Bar via the [unofficial Webtoon API](https://rapidapi.com/apidojo/api/webtoon/) or web scraping
 * Replace MongoDB logo with text
 * Improve styles
+* App.js - get/set state defined but not used warning
+* Webtoon Gallery - Each child in list should have unique key
 
 ### Known Issues
 
@@ -47,6 +54,31 @@ The app is pulling information from the Unofficial
 * https://github.com/chrisblakely01/react-movie-app
 * https://www.mongodb.com/languages/mern-stack-tutorial
 * https://www.freecodecamp.org/news/how-to-create-a-react-app-with-a-node-backend-the-complete-guide/
+* https://www.digitalocean.com/community/tutorials/how-to-add-login-authentication-to-react-applications
+
+Storing User Passwords
+https://coderrocketfuel.com/article/store-passwords-in-mongodb-with-node-js-mongoose-and-bcrypt
+
+## Maybe Check Out
+
+* https://github.com/typicode/json-server
+* https://mongoosejs.com/
+
+### Testing
+
+* https://www.geeksforgeeks.org/debugging-and-testing-of-a-node-js-application/
+* https://jestjs.io/docs/getting-started
+* https://jestjs.io/docs/configuration
+* https://jestjs.io/docs/mongodb
+
+### React
+
+* https://www.digitalocean.com/community/tutorials/how-to-call-web-apis-with-the-useeffect-hook-in-react
+
+### Node
+
+* https://github.com/kubowania/battleships/tree/multiplayer
+* https://github.com/kubowania/battleships/blob/single-player/app.js
 
 ## Issues
 

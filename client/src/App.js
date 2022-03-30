@@ -9,6 +9,7 @@ import UseToken from './components/Login/UseToken';
 import NotFoundPage from './components/NotFoundPage';
 
 import Navbar from './components/Navbar';
+import WebtoonGallery from './components/Webtoons/Gallery/WebtoonGallery';
 import UserWebtoonList from './components/Webtoons/User/WebtoonList';
 import UserEditWebtoon from './components/Webtoons/User/EditWebtoon';
 import UserAddWebtoon from './components/Webtoons/User/AddWebtoon';
@@ -35,7 +36,7 @@ const App = () => {
 	    <Navbar />
 	    <div className="container site-inner">
 	    <Routes>
-		    <Route exact path="/" element={<UserWebtoonList />} />
+		    <Route exact path="/" element={<WebtoonGallery />} />
 		    <Route path="/profile" element={<UserWebtoonList />} />
 		    <Route path="/edit/:id" element={<UserEditWebtoon />} />
 		    <Route path="/add" element={<UserAddWebtoon />} />

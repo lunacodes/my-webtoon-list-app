@@ -39,7 +39,7 @@ export default function UserAddWebtoon() {
 		});
 
 		setForm({ title: "", score: "", progress: "", tags: "" });
-		navigate("/");
+		navigate("/profile");
 	}
 
 	return (

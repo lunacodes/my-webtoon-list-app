@@ -65,7 +65,7 @@ export default function UserEditWebtoon() {
 			},
 		});
 
-		navigate('/');
+		navigate('/profile');
 	}
 
 	return (
