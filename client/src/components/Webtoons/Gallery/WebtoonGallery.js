@@ -46,6 +46,7 @@ const WebtoonGallery = () => {
 			<SearchBox />
 			<WebtoonGalleryHeading />
 			<AddGalleryWebtoon />
+
 			<p>This is will soon become the main gallery. For now, please visit the<a href="/profile">Profile page</a>, for the normal User Webtoons View.</p>
 		</div>
 	);

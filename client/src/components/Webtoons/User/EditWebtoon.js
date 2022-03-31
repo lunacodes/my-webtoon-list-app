@@ -71,7 +71,7 @@ export default function UserEditWebtoon() {
 	return (
 		<div>
 			<WebtoonListHeading heading="Edit Webtoon" />
-			<UserWebtoonEntryForm form={form} onSubmit={onSubmit} updateForm={updateForm} />
+			<UserWebtoonEntryForm form={form} onSubmit={onSubmit} updateForm={updateForm} submitText="Update Webtoon" />
 		</div>
 	);
 };

@@ -29,6 +29,7 @@ export default function Login({ setToken }) {
 	return(
 		<div className="login-wrapper">
 			<h1>Please Log In</h1>
+			<p><a href="/signup">Need to register?</a></p>
 			<form onSubmit={handleSubmit}>
 				<label>
 					<p>Username</p>

@@ -1,9 +1,11 @@
+import React from 'react';
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import WebtoonListHeading from '../WebtoonListHeading';
-import UserWebtoonEntryForm from './WebtoonEntryForm';
+import UserListHeading from '../UserListHeading';
+import UserUserEntryForm from './UserEntryForm';
 
-export default function UserAddWebtoon() {
+export default function CreateUser() {
 	const [form, setForm] = useState({
 		title: "",
 		score: "",
@@ -23,15 +25,15 @@ export default function UserAddWebtoon() {
 	async function onSubmit(e) {
 		e.preventDefault();
 
-		// When a post request is sent to the create url, we'll add a new webtoon to the database.
-		const newWebtoon = { ...form };
+		// When a post request is sent to the create url, we'll add a new User to the database.
+		const newUser = { ...form };
 
-		await fetch("http://localhost:3001/webtoon/add", {
+		await fetch("http://localhost:3001/signup", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify(newWebtoon),
+			body: JSON.stringify(newUser),
 		})
 		.catch(error => {
 			window.alert(error);
@@ -44,8 +46,8 @@ export default function UserAddWebtoon() {
 
 	return (
 		<div>
-			<WebtoonListHeading heading="Add a Webtoon" />
-			<UserWebtoonEntryForm form={form} onSubmit={onSubmit} updateForm={updateForm} submitText="Add Webtoon" />
+			<UserListHeading heading="Add a User" />
+			<UserUserEntryForm form={form} onSubmit={onSubmit} updateForm={updateForm} />
 		</div>
 	);
 }

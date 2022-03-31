@@ -79,4 +79,44 @@ webtoonRoutes.route('/:id').delete(function (req, response) {
 	});
 });
 
+// Create a new user
+webtoonRoutes.route('/user/add').post(function (req, response) {
+	let db_connect = dbo.getDb('webtoons');
+	let myObj = {
+		name_first: req.body.name_first,
+		name_last: req.body.name_last,
+		username: req.body.username,
+		pass: req.body.pass,
+	};
+
+	db_connect.collection('users').insertOne(myObj, (err, res) => {
+		if (err) throw err;
+		console.log('1 user added');
+		response.json(res);
+	});
+});
+
+// Update a user entry by id
+webtoonRoutes.route('/users/update/:id').post(function (req, response) {
+	let db_connect = dbo.getDb('webtoons');
+	let myquery = { _id: ObjectId( req.params.id )};
+	let newvalues = {
+		$set: {
+			title: req.body.title,
+			score: req.body.score,
+			progress: req.body.progress,
+			tags: req.body.tags,
+		},
+	};
+
+	db_connect
+		.collection('users')
+		.updateOne(myquery, newvalues, function (err, res) {
+			if (err) throw err;
+			console.log('1 user updated');
+			response.json(res);
+		});
+});
+
+
 module.exports = webtoonRoutes;

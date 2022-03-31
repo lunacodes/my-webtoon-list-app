@@ -4,6 +4,7 @@ import WebtoonListHeading from '../WebtoonListHeading';
 
 const Webtoon = (props) => (
   <tr>
+	  <td><img src="https://via.placeholder.com/100" alt="{props.webtoon.title thumbnail}" /></td>
     <td>{props.webtoon.title}</td>
     <td>{props.webtoon.score}</td>
     <td>{props.webtoon.progress}</td>
@@ -75,6 +76,7 @@ export default function UserWebtoonList() {
       <table className="table table-striped" style={{ marginTop: 20 }}>
         <thead>
           <tr>
+          	<th>Image</th>
             <th>Title</th>
             <th>Score</th>
             <th>Progress</th>
