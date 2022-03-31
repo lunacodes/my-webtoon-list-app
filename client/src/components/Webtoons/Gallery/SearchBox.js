@@ -2,7 +2,7 @@ import React from 'react';
 
 const SearchBox = (props) => {
 	return(
-		<div className='col col-sm-4'>
+		<div className='col col-sm-4 search-box'>
 			<input
 				type='text'
 				className='form-control'

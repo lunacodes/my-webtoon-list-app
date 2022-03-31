@@ -1,19 +1,59 @@
 import React from 'react';
 
-const WebtoonList = (props) => {
+export default function GalleryDisplay(props) {
 	const MyWebtoonsComponent = props.MyWebtoonsComponent;
 
 	return (
-		<>
-		{props.webtoons.map((webtoon, index) => (
-
-			<div className='image-container d-flex justify-content-start m-3'>
-				<div>{webtoon.title} {webtoon.starScoreAverage}</div>
-				<MyWebtoonsComponent />
+		<div className='gallery-container'>
+			<div className="gallery-thumbnail">
+				<figure>
+					<img src="https://via.placeholder.com/200x275" alt="Webtoon Title thumbnail" />
+					<figcaption className="overlay">Webtoon Title</figcaption>
+				</figure>
 			</div>
-		))};
-		</>
+			<div className="gallery-thumbnail">
+				<figure>
+					<img src="https://via.placeholder.com/200x275" alt="Webtoon Title thumbnail" />
+					<figcaption className="overlay">Webtoon Title</figcaption>
+				</figure>
+			</div>
+			<div className="gallery-thumbnail">
+				<figure>
+					<img src="https://via.placeholder.com/200x275" alt="Webtoon Title thumbnail" />
+					<figcaption className="overlay">Webtoon Title</figcaption>
+				</figure>
+			</div>
+			<div className="gallery-thumbnail">
+				<figure>
+					<img src="https://via.placeholder.com/200x275" alt="Webtoon Title thumbnail" />
+					<figcaption className="overlay">Webtoon Title</figcaption>
+				</figure>
+			</div>
+			<div className="gallery-thumbnail">
+				<figure>
+					<img src="https://via.placeholder.com/200x275" alt="Webtoon Title thumbnail" />
+					<figcaption className="overlay">Webtoon Title</figcaption>
+				</figure>
+			</div>
+			<div className="gallery-thumbnail">
+				<figure>
+					<img src="https://via.placeholder.com/200x275" alt="Webtoon Title thumbnail" />
+					<figcaption className="overlay">Webtoon Title</figcaption>
+				</figure>
+			</div>
+			<div className="gallery-thumbnail">
+				<figure>
+					<img src="https://via.placeholder.com/200x275" alt="Webtoon Title thumbnail" />
+					<figcaption className="overlay">Webtoon Title</figcaption>
+				</figure>
+			</div>
+			<div className="gallery-thumbnail">
+				<figure>
+					<img src="https://via.placeholder.com/200x275" alt="Webtoon Title thumbnail" />
+					<figcaption className="overlay">Webtoon Title</figcaption>
+				</figure>
+			</div>
+
+		</div>
 	);
 };
-
-export default WebtoonList;
