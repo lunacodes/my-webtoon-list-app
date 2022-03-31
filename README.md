@@ -29,11 +29,13 @@ Write tests for:
 * Store user info securely, via hashing
 * Enable logout
 * Build User Dashboard
+* Let user add Webtoons to their list, directly from the main gallery
 
 ### Other
 
 * Split server routes into separate files for user and webtoons
 * Replace placeholder images
+* Generate pages for each webtoon, from JSON API data
 
 ### Images
 
