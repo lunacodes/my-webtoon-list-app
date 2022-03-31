@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import WebtoonGalleryList from './WebtoonGalleryList';
 import SearchBox from './SearchBox';
-import AddGalleryWebtoon from './AddGalleryWebtoon';
 import WebtoonGalleryHeading from './WebtoonGalleryHeading';
 
 const WebtoonGallery = () => {
@@ -16,7 +15,6 @@ const WebtoonGallery = () => {
 			<WebtoonGalleryHeading heading="Webtoons" />
 			<SearchBox />
 			<WebtoonGalleryList webtoons={webtoons} />
-			{/* <AddGalleryWebtoon /> */}
 		</div>
 	);
 };

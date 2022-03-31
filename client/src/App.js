@@ -33,20 +33,20 @@ const App = () => {
 	}
 
 	return (
-	  <div>
-	    <Navbar />
-	    <div className="container site-inner">
-	    <Routes>
-		    <Route exact path="/" element={<WebtoonGallery />} />
-		    <Route path="/profile" element={<UserWebtoonList />} />
-		    <Route path="/edit/:id" element={<UserEditWebtoon />} />
-		    <Route path="/add" element={<UserAddWebtoon />} />
-		    <Route path="/signup" element={<AddUser />}/>
-		    <Route path="/login" element={<Login setToken={setToken} />}/>
-		    <Route path="*" element={<NotFoundPage />} />
-	    </Routes>
-	    </div>
-	  </div>
+		<div>
+			<Navbar />
+			<div className="container site-inner">
+			<Routes>
+				<Route exact path="/" element={<WebtoonGallery />} />
+				<Route path="/profile" element={<UserWebtoonList />} />
+				<Route path="/edit/:id" element={<UserEditWebtoon />} />
+				<Route path="/add" element={<UserAddWebtoon />} />
+				<Route path="/signup" element={<AddUser />}/>
+				<Route path="/login" element={<Login setToken={setToken} />}/>
+				<Route path="*" element={<NotFoundPage />} />
+			</Routes>
+			</div>
+		</div>
 	);
 };
 

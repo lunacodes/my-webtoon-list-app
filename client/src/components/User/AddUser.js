@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import WebtoonListHeading from '../Webtoons/WebtoonListHeading';
-import SignupForm from './SignupForm';
+import AddUserForm from './AddUserForm';
 
 export default function UserAddWebtoon() {
 	const [form, setForm] = useState({
@@ -45,7 +45,7 @@ export default function UserAddWebtoon() {
 	return (
 		<div>
 			<WebtoonListHeading heading="Register User" />
-			<SignupForm form={form} onSubmit={onSubmit} updateForm={updateForm} />
+			<AddUserForm form={form} onSubmit={onSubmit} updateForm={updateForm} />
 		</div>
 	);
 }
