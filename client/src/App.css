@@ -95,7 +95,7 @@ h1,
   width: 100%;
 }
 
-.nav-wrap .container-fluid {
+.top-nav .nav-wrap.container-fluid {
   margin: 0 auto;
   max-width: initial;
   padding: 0 1rem;
