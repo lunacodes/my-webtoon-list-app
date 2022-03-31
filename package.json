@@ -2,6 +2,10 @@
   "name": "my-webtoon-list-app",
   "version": "1.0.0",
   "description": "An app for keeping track of one's webtoons. Inspired by <https://myanimelist.net/>.",
+  "engines": {
+    "node": "16.13.1",
+    "npm": "8.3.0"
+  },
   "main": "server/server.js",
   "scripts": {
     "start": "cd server && node server.js",
