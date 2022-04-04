@@ -1,7 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Webtoon = require('../model/Webtoon');
-const addWebtoon = require('../controller/addWebtoon');
+const addWebtoon = require('../controller/webtoons/addWebtoon');
+const listWebtoons = require('../controller/webtoons/listWebtoons');
+const findWebtoonById = require('../controller/webtoons/findWebtoonById');
+const updateWebtoonById = require('../controller/webtoons/updateWebtoonById');
+const deleteWebtoonById = require('../controller/webtoons/deleteWebtoonById');
 
 // Instance of the Express router (which controls the requests)
 // We use this to define our roles
@@ -11,26 +15,13 @@ const ObjectId = require('mongodb').ObjectId;
 
 // Get a list of the webtoons
 webtoonRoutes.route('/webtoon').get((req, res) => {
-	let db_connect = dbo.getDb('webtoons');
-	db_connect
-		.collection('webtoons')
-		.find({})
-		.toArray((err, result) => {
-			if (err) throw err;
-			res.json(result);
-		});
+	listWebtoons(res);
 });
 
 // Get a single webtoon by id
 webtoonRoutes.route('/webtoon/:id').get((req, res) => {
-	let db_connect = dbo.getDb();
-	let myquery = { _id: ObjectId( req.params.id )};
-	db_connect
-		.collection('webtoons')
-		.findOne(myquery, (err, result) => {
-			if (err) throw err;
-			res.json(result);
-		});
+	let myQuery = { _id: ObjectId( req.params.id )};
+	findWebtoonById(res, myQuery);
 });
 
 // Create a new webtoon entry
@@ -44,10 +35,9 @@ webtoonRoutes.route('/webtoon/add').post((req, response) => {
 });
 
 // Update a webtoon entry by id
-webtoonRoutes.route('/update/:id').post((req, response) => {
-	let db_connect = dbo.getDb();
-	let myquery = { _id: ObjectId( req.params.id )};
-	let newvalues = {
+webtoonRoutes.route('/update/:id').post((req, res) => {
+	let myId = { _id: ObjectId( req.params.id )};
+	let newValues = {
 		$set: {
 			title: req.body.title,
 			score: req.body.score,
@@ -56,24 +46,13 @@ webtoonRoutes.route('/update/:id').post((req, response) => {
 		},
 	};
 
-	db_connect
-		.collection('webtoons')
-		.updateOne(myquery, newvalues, (err, res) => {
-			if (err) throw err;
-			console.log('1 webtoon updated');
-			response.json(res);
-		});
+	updateWebtoonById(res, myId, newValues);
 });
 
 // Delete a webtoon by id
-webtoonRoutes.route('/:id').delete((req, response) => {
-	let db_connect = dbo.getDb();
-	let myquery = { _id: ObjectId( req.params.id )};
-	db_connect.collection('webtoons').deleteOne(myquery, (err, obj) => {
-		if (err) throw err;
-		console.log('1 webtoon deleted');
-		response.json(obj);
-	});
+webtoonRoutes.route('/:id').delete((req, res) => {
+	let myId = { _id: ObjectId( req.params.id )};
+	deleteWebtoonById(res, myId);
 });
 
 // Create a new user
