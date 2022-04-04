@@ -1,6 +1,4 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const Webtoon = require('../model/Webtoon');
 const addWebtoon = require('../controller/webtoons/addWebtoon');
 const listWebtoons = require('../controller/webtoons/listWebtoons');
 const findWebtoonById = require('../controller/webtoons/findWebtoonById');
@@ -54,45 +52,5 @@ webtoonRoutes.route('/:id').delete((req, res) => {
 	let myId = { _id: ObjectId( req.params.id )};
 	deleteWebtoonById(res, myId);
 });
-
-// Create a new user
-webtoonRoutes.route('/user/add').post((req, response) => {
-	let db_connect = dbo.getDb('webtoons');
-	let myObj = {
-		name_first: req.body.name_first,
-		name_last: req.body.name_last,
-		username: req.body.username,
-		pass: req.body.pass,
-	};
-
-	db_connect.collection('users').insertOne(myObj, (err, res) => {
-		if (err) throw err;
-		console.log('1 user added');
-		response.json(res);
-	});
-});
-
-// Update a user entry by id
-webtoonRoutes.route('/users/update/:id').post((req, response) => {
-	let db_connect = dbo.getDb('webtoons');
-	let myquery = { _id: ObjectId( req.params.id )};
-	let newvalues = {
-		$set: {
-			title: req.body.title,
-			score: req.body.score,
-			progress: req.body.progress,
-			tags: req.body.tags,
-		},
-	};
-
-	db_connect
-		.collection('users')
-		.updateOne(myquery, newvalues, (err, res) => {
-			if (err) { throw err; }
-			console.log('1 user updated');
-			response.json(res);
-		});
-});
-
 
 module.exports = webtoonRoutes;
