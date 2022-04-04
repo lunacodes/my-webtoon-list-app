@@ -1,4 +1,7 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const Webtoon = require('../model/Webtoon');
+const addWebtoon = require('../controller/addWebtoon');
 
 // Instance of the Express router (which controls the requests)
 // We use this to define our roles
@@ -32,18 +35,12 @@ webtoonRoutes.route('/webtoon/:id').get((req, res) => {
 
 // Create a new webtoon entry
 webtoonRoutes.route('/webtoon/add').post((req, response) => {
-	let db_connect = dbo.getDb();
-	let myObj = {
-		title: req.body.title,
-		score: req.body.score,
-		progress: req.body.progress,
-		tags: req.body.tags,
-	};
+	let title = req.body.title;
+	let score = req.body.score;
+	let progress = req.body.progress;
+	let tags = req.body.tags;
 
-	db_connect.collection('webtoons').insertOne(myObj, (err, res) => {
-		if (err) throw err;
-		response.json(res);
-	});
+	addWebtoon(title, score, progress, tags);
 });
 
 // Update a webtoon entry by id

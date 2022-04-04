@@ -18,7 +18,7 @@ login.use('/login', (req, res) => {
 
 login.listen(LOGIN_PORT, () => {
 	console.log('Login is running on port 8080');
-})
+});
 
 // Main React App
 app.use(cors());
