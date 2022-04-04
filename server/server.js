@@ -25,9 +25,7 @@ app.use(cors());
 app.use(express.json());
 app.use(require('./routes/webtoon'));
 app.use(require('./routes/user'));
-
-// Get db driver connection
-const dbo = require('./db/conn');
+app.use(require('./routes/gallery'));
 
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, '../client/build')));
@@ -43,8 +41,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-	dbo.connectToServer((err) => {
-		if (err) console.log(err);
-	});
 	console.log(`Server is running on port ${PORT}`);
 });

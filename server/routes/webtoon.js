@@ -8,7 +8,6 @@ const deleteWebtoonById = require('../controller/webtoons/deleteWebtoonById');
 // Instance of the Express router (which controls the requests)
 // We use this to define our roles
 const webtoonRoutes = express.Router();
-const dbo = require('../db/conn');
 const ObjectId = require('mongodb').ObjectId;
 
 // Get a list of the webtoons
@@ -23,13 +22,13 @@ webtoonRoutes.route('/webtoon/:id').get((req, res) => {
 });
 
 // Create a new webtoon entry
-webtoonRoutes.route('/webtoon/add').post((req, response) => {
+webtoonRoutes.route('/webtoon/add').post((req, res) => {
 	let title = req.body.title;
 	let score = req.body.score;
 	let progress = req.body.progress;
 	let tags = req.body.tags;
 
-	addWebtoon(title, score, progress, tags);
+	addWebtoon(res, title, score, progress, tags);
 });
 
 // Update a webtoon entry by id

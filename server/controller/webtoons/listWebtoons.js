@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 const Webtoon = require('../../model/Webtoon');
 
-/**
- * Return the id of a newly created webtoon
- */
+// List the webtoons
 module.exports = async function listWebtoons(res) {
 	const options = {dbName: 'webtoons'};
 	mongoose.connect(process.env.ATLAS_URI, options);
