@@ -1,84 +1,84 @@
 h1,
 .searchbox {
-	margin: 0 1rem 1rem;
+  margin: 0 1rem 1rem;
 }
 
 .navbar-nav {
-	padding: 0 20px 0 0;
+  padding: 0 20px 0 0;
 }
 
 .site-inner {
-	margin: 20px auto;
+  margin: 20px auto;
 }
 
 .add-webtoon {
-	font-weight: 700;
+  font-weight: 700;
 }
 
 .search {
-	display: flex;
-	justify-content: space-between;
-	width: 25%
+  display: flex;
+  justify-content: space-between;
+  width: 25%;
 }
 
 .search-box {
-	width: 60%;
-	height: 46px;
-	font-size: 16px;
+  width: 60%;
+  height: 46px;
+  font-size: 16px;
 }
 
 .button {
- background-color: rgb(76, 175, 137);
- border: none;
- color: white;
- padding: 15px 32px;
- text-align: center;
- text-decoration: none;
- font-size: 16px;
- cursor: pointer;
+  background-color: rgb(76, 175, 137);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .gallery-container {
-	display: flex;
-	flex-flow: row wrap;
-	gap: 40px;
-	justify-content: flex-start;
-	margin: 1rem;
-	text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 40px;
+  justify-content: flex-start;
+  margin: 1rem;
+  text-align: center;
 }
 
 .gallery-thumbnail {
-	margin: 1rem;
-	max-width: fit-content;
-	position: relative;
-	transition: transform 0.2s;
+  margin: 1rem;
+  max-width: fit-content;
+  position: relative;
+  transition: transform 0.2s;
 }
 
 .gallery-thumbnail:hover {
-	cursor: pointer;
-	transform: scale(1.1);
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 .gallery-thumbnail img {
-	width: 200px;
-	height: 275px;
+  width: 200px;
+  height: 275px;
 }
 
 .gallery-thumbnail:hover .overlay {
-	opacity: 1;
+  opacity: 1;
 }
 
 .overlay {
-	background: rgba(0, 0, 0, 0.8);
-	bottom: 15px;
-	color: white;
-	font-size: 1rem;
-	opacity: 0;
-	padding: 0.75rem;
-	position: absolute;
-	text-align: center;
-	transition: 0.5s ease;
-	width: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  bottom: 15px;
+  color: white;
+  font-size: 1rem;
+  opacity: 0;
+  padding: 0.75rem;
+  position: absolute;
+  text-align: center;
+  transition: 0.5s ease;
+  width: 100%;
 }
 
 .nav-wrap,

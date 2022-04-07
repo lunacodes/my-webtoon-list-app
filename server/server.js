@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const login = express();
 const cors = require('cors');
-require('dotenv').config({ path: './config.env'});
+require('dotenv').config({ path: './config.env' });
 const PORT = process.env.PORT || 3001;
 const LOGIN_PORT = process.env.port || 8080;
 const session_token = process.env.TOKEN;
@@ -11,13 +11,13 @@ const session_token = process.env.TOKEN;
 // Login Service
 login.use(cors());
 login.use('/login', (req, res) => {
-	res.send({
-		token: session_token
-	});
+  res.send({
+    token: session_token,
+  });
 });
 
 login.listen(LOGIN_PORT, () => {
-	console.log('Login is running on port 8080');
+  console.log('Login is running on port 8080');
 });
 
 // Main React App
@@ -31,8 +31,8 @@ app.use(require('./routes/gallery'));
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 // Handle GET requests to /api route
-app.get("/api", (req, res) => {
-  res.json({ message: "Hello from server!" });
+app.get('/api', (req, res) => {
+  res.json({ message: 'Hello from server!' });
 });
 
 // All other GET requests not handled before will return our React app
@@ -41,5 +41,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-	console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
