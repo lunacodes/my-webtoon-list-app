@@ -27,7 +27,7 @@ function getToken() {
 
 const App = () => {
 	const { token, setToken } = UseToken();
-	if (!token) {
+	if (window.location.pathname === '/profile' && !token) {
 		console.log('! token');
 		return <Login setToken={setToken} />;
 	}
