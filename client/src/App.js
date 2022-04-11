@@ -20,14 +20,14 @@ function setToken(userToken) {
 }
 
 function getToken() {
-	const tokenString = sessionStorage.getItem('token');
+	const tokenString = localStorage.getItem('token');
 	const userToken = JSON.parse(tokenString);
 	return userToken?.token;
 }
 
 const App = () => {
 	const { token, setToken } = UseToken();
-	if (window.location.pathname === '/profile' && !token) {
+	if (!token) {
 		console.log('! token');
 		return <Login setToken={setToken} />;
 	}
