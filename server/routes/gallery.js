@@ -4,7 +4,7 @@ const Gallery = require('../model/Gallery');
 const galleryRoutes = express.Router();
 
 // Get a list of the webtoons
-galleryRoutes.route('/gallery').get((req, res) => {
+galleryRoutes.route('/webtoonGallery').get((req, res) => {
 	// listGallery(res);
 	const options = { dbName: 'webtoons' };
 	mongoose.connect(process.env.ATLAS_URI, options);

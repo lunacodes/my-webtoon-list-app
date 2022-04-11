@@ -33,7 +33,7 @@ export default function UserWebtoonList() {
 	// This method fetches the webtoons from the database.
 	useEffect(() => {
 		async function getWebtoons() {
-			const response = await fetch(`http://localhost:3001/gallery`);
+			const response = await fetch(`http://localhost:3001/webtoonGallery`);
 
 			if (!response.ok) {
 				const message = `An error occured: ${response.statusText}`;
