@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import WebtoonListHeading from '../WebtoonListHeading';
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const Webtoon = (props) => (
 	<div className='image-container'>
@@ -30,10 +30,13 @@ const Webtoon = (props) => (
 export default function UserWebtoonList() {
 	const [webtoons, setWebtoons] = useState([]);
 
-	// This method fetches the webtoons from the database.
 	useEffect(() => {
 		async function getWebtoons() {
-			const response = await fetch(`http://localhost:3001/webtoonGallery`);
+			// const list_url = BASE_URL + '/webtoonGallery';
+			console.log(`${BASE_URL}/webtoonGallery`);
+			const response = await fetch(`${BASE_URL}/webtoonGallery`, {
+				mode: 'cors',
+			});
 
 			if (!response.ok) {
 				const message = `An error occured: ${response.statusText}`;
@@ -52,8 +55,10 @@ export default function UserWebtoonList() {
 
 	// This method will delete a webtoon
 	async function deleteWebtoon(id) {
-		await fetch(`http://localhost:3001/${id}`, {
+		// const url = BASE_URL + id;
+		await fetch(`${BASE_URL}/${id}`, {
 			method: 'DELETE',
+			mode: 'cors',
 		});
 
 		const newWebtoons = webtoons.filter((el) => el._id !== id);
@@ -63,7 +68,8 @@ export default function UserWebtoonList() {
 	// This method will map out the webtoons on the table
 	function webtoonList() {
 		return webtoons.map((webtoon) => {
-			const image = `/img/${webtoon.titleForSeo}.jpg`;
+			const image = BASE_URL + '/img/' + webtoon.titleForSeo + '.jpg';
+			// const image = `${BASE_URL}/img/${webtoon.titleForSeo}.jpg`;
 			return (
 				<Webtoon
 					webtoon={webtoon}

@@ -17,7 +17,7 @@ login.use('/login', (req, res) => {
 });
 
 login.listen(LOGIN_PORT, () => {
-	console.log('Login is running on port 8080');
+	console.log(`Login is running on port ${LOGIN_PORT}`);
 });
 
 // Main React App

@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Login.css';
+const LOGIN_BASE = process.env.REACT_APP_LOGIN_URL;
 
 async function loginUser(credentials) {
-	return fetch('http://localhost:8080/login', {
+	return fetch(`${LOGIN_BASE}/login`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
 		},
-		mode: 'cors',
 		body: JSON.stringify(credentials),
 	}).then((data) => data.json());
 }
@@ -27,33 +27,35 @@ export default function Login({ setToken }) {
 	};
 
 	return (
-		<div className='login-wrapper'>
-			<h1>Please Log In</h1>
-			<p>
-				<a href='/signup'>Need to register?</a>
-			</p>
-			<form onSubmit={handleSubmit}>
-				<label>
-					<p>Username</p>
-					<input
-						type='text'
-						onChange={(e) => setUserName(e.target.value)}
-						autoComplete='username'
-					/>
-				</label>
-				<label>
-					<p>Password</p>
-					<input
-						type='password'
-						onChange={(e) => setPassword(e.target.value)}
-						autoComplete='password'
-					/>
-				</label>
-				<div>
-					<button type='submit'>Submit</button>
-				</div>
-			</form>
-		</div>
+		<main className='container site-inner'>
+			<div className='login-wrapper'>
+				<h1>Please Log In</h1>
+				<p>
+					<a href='/signup'>Need to register?</a>
+				</p>
+				<form onSubmit={handleSubmit}>
+					<label>
+						<p>Username</p>
+						<input
+							type='text'
+							onChange={(e) => setUserName(e.target.value)}
+							autoComplete='username'
+						/>
+					</label>
+					<label>
+						<p>Password</p>
+						<input
+							type='password'
+							onChange={(e) => setPassword(e.target.value)}
+							autoComplete='password'
+						/>
+					</label>
+					<div>
+						<button type='submit'>Submit</button>
+					</div>
+				</form>
+			</div>
+		</main>
 	);
 }
 

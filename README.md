@@ -39,3 +39,4 @@ Write tests for:
 - Give login token a more specific name
 - Improve mongoose search query filtering (see below) via passing `const filter` to `Model.find()`
 - Add `reactstrap`
+- HSTS Issue with Brave Browser (due to connecting to localhost, instead of public url)

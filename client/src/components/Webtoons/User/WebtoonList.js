@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import WebtoonListHeading from '../WebtoonListHeading';
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const Webtoon = (props) => (
 	<tr>
@@ -15,7 +16,9 @@ const Webtoon = (props) => (
 		<td>{props.webtoon.progress}</td>
 		<td>{props.webtoon.tags}</td>
 		<td>
-			<Link className='btn btn-link' to={`/edit/${props.webtoon._id}`}>Edit</Link>
+			<Link className='btn btn-link' to={`/edit/${props.webtoon._id}`}>
+				Edit
+			</Link>
 			|
 			<button
 				className='btn btn-link'
@@ -32,10 +35,9 @@ const Webtoon = (props) => (
 export default function UserWebtoonList() {
 	const [webtoons, setWebtoons] = useState([]);
 
-	// This method fetches the webtoons from the database.
 	useEffect(() => {
 		async function getWebtoons() {
-			const response = await fetch(`http://localhost:3001/webtoon/`);
+			const response = await fetch(`${BASE_URL}/webtoon/`, { mode: 'cors' });
 
 			if (!response.ok) {
 				const message = `An error occured: ${response.statusText}`;
@@ -54,8 +56,9 @@ export default function UserWebtoonList() {
 
 	// This method will delete a webtoon
 	async function deleteWebtoon(id) {
-		await fetch(`http://localhost:3001/${id}`, {
+		await fetch(`/${id}`, {
 			method: 'DELETE',
+			mode: 'cors',
 		});
 
 		const newWebtoons = webtoons.filter((el) => el._id !== id);
