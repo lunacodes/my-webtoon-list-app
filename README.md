@@ -8,11 +8,11 @@ Demo: <https://my-webtoon-list.herokuapp.com/>
 
 ## Technical Stack
 
-* Platform: Heroku
-* Server: Node.js, Express, Axios
-* API: ATLAS
-* Front End: React
-* Database: MongoDB
+- Platform: Heroku
+- Server: Node.js, Express
+- API: ATLAS
+- Front End: React
+- Database: MongoDB
 
 ## To-Do
 
@@ -20,29 +20,21 @@ Demo: <https://my-webtoon-list.herokuapp.com/>
 
 Write tests for:
 
-[] API calls
 [] Gallery renders
-[] Add, Delete, and Update users/entries
+[] User login/logout
+[] API calls
+[] Add, Read, Delete, and Update users/entries
 
 ### User Functionality
 
-* Store user info securely, via hashing
-* Enable logout
-* Build User Dashboard
-* Let user add Webtoons to their list, directly from the main gallery
+- Store user login info securely, via hashing
+- Enable logout
+- Build User Dashboard
+- Let user add Webtoons to their list, directly from the main gallery
 
 ### Other
 
-* Split server routes into separate files for user and webtoons
-* Replace placeholder images
-* Generate pages for each webtoon, from JSON API data
-
-### Images
-
-### Images don't display yet
-
-From: https://rapidapi.com/apidojo/api/webtoon/tutorials/how-to-load-images
-
-> You have to make GET method request with the following in request headers :
-> User-Agent:Mozilla/5.0 (Linux; Android 8.1.0; Mi MIX 2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Mobile Safari/537.36
-> Referer:http://m.webtoons.com/
+- Replace placeholder images on Profile pages
+- Generate pages for each webtoon, from JSON API data
+- Give login token a more specific name
+- Improve mongoose search query filtering (see below) via passing `const filter` to `Model.find()`
