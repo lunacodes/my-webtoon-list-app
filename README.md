@@ -28,7 +28,7 @@ Write tests for:
 ### User Functionality
 
 - Store user login info securely, via hashing
-- Enable logout
+- Individualize Users
 - Build User Dashboard
 - Let user add Webtoons to their list, directly from the main gallery
 
@@ -38,3 +38,4 @@ Write tests for:
 - Generate pages for each webtoon, from JSON API data
 - Give login token a more specific name
 - Improve mongoose search query filtering (see below) via passing `const filter` to `Model.find()`
+- Add `reactstrap`
