@@ -1,0 +1,26 @@
+.add-webtoon {
+  font-weight: 700;
+}
+
+.search {
+  display: flex;
+  justify-content: space-between;
+  width: 25%;
+}
+
+.search-box {
+  font-size: 16px;
+  height: 46px;
+  width: 60%;
+}
+
+.button {
+  background-color: rgb(76, 175, 137);
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+}

@@ -1,7 +1,7 @@
 {
   "name": "my-webtoon-list-app",
   "version": "1.0.0",
-  "description": "An app for keeping track of one's webtoons. Inspired by <https://myanimelist.net/>.",
+  "description": "An app for keeping track of one's webtoons. Inspired by <https://myanimelist.net/>. Runs a Node + Mongoose server, and a React client app",
   "engines": {
     "node": "16.13.1",
     "npm": "8.3.0"
@@ -42,6 +42,10 @@
     "jest": "^27.5.1",
     "mocha": "^9.2.2",
     "nodemon": "^2.0.15",
+    "stylelint": "^14.6.1",
+    "stylelint-config-prettier-scss": "^0.0.1",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-order": "^5.0.0",
     "superagent": "^7.1.2",
     "supertest": "^6.2.2"
   }

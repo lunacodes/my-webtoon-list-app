@@ -1,0 +1,91 @@
+@import './variables';
+
+.webtoon-main-gallery {
+  margin: 1rem auto;
+}
+
+@media (min-width: $tablet-sm) {
+  .webtoon-main-gallery {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: $tablet) {
+  .webtoon-main-gallery {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: $desktop) {
+  .webtoon-main-gallery {
+    grid-gap: 3rem;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (min-width: $desktop-xl) {
+  .webtoon-main-gallery {
+    grid-gap: 2rem;
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.image-container {
+  display: flex;
+  flex-flow: column wrap;
+  margin: 1.5em;
+  position: relative;
+  transition: transform 0.2s;
+}
+
+@media (min-width: $tablet-sm) {
+  .image-container {
+    margin: 0;
+    overflow: hidden;
+  }
+}
+
+.image-container:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
+.image-container img {
+  height: auto;
+  width: auto;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.8);
+  bottom: 49px;
+  color: white;
+  font-size: 1rem;
+  opacity: 0;
+  padding: 1rem;
+  position: absolute;
+  text-align: center;
+  transition: 0.5s ease;
+  width: 100%;
+}
+
+@media (min-width: $tablet) {
+  .overlay {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+}
+
+.webtoon-title {
+  font-size: 1.375rem;
+  overflow: hidden;
+  padding: 0 1rem;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
