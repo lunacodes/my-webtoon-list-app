@@ -11,13 +11,13 @@ const session_token = process.env.TOKEN;
 // Login Service
 login.use(cors());
 login.use('/login', (req, res) => {
-  res.send({
-    token: session_token,
-  });
+	res.send({
+		token: session_token,
+	});
 });
 
 login.listen(LOGIN_PORT, () => {
-  console.log('Login is running on port 8080');
+	console.log('Login is running on port 8080');
 });
 
 // Main React App
@@ -32,14 +32,14 @@ app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 // Handle GET requests to /api route
 app.get('/api', (req, res) => {
-  res.json({ message: 'Hello from server!' });
+	res.json({ message: 'Hello from server!' });
 });
 
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+	res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+	console.log(`Server is running on port ${PORT}`);
 });
