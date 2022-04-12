@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './Login.css';
-const LOGIN_BASE = process.env.REACT_APP_LOGIN_URL;
+const LOGIN_BASE = process.env.REACT_APP_LOGIN_URL || 'https://localhost';
 
 async function loginUser(credentials) {
+	console.log(`login: ${LOGIN_BASE}/login`);
+
 	return fetch(`${LOGIN_BASE}/login`, {
 		method: 'POST',
 		headers: {
