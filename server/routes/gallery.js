@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Gallery = require('../model/Gallery');
+const Gallery = require('../models/Gallery');
 const galleryRoutes = new express.Router();
 const listGallery = require('../controller/gallery/listGallery');
 

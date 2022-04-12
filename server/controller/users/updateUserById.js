@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const User = require('../../model/User');
+const User = require('../../models/User');
 
 /**
  * Return the id of a newly created user

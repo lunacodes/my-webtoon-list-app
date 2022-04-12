@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Gallery = require('../../model/Gallery');
+const Gallery = require('../../models/Gallery');
 
 // List the webtoons
 module.exports = async function listGallery(res) {

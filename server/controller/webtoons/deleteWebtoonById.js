@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Webtoon = require('../../model/Webtoon');
+const Webtoon = require('../../models/Webtoon');
 
 /**
  * Return the id of a newly created webtoon
