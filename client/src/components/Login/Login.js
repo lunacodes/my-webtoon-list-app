@@ -1,66 +1,39 @@
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
-import './Login.css';
-const LOGIN_BASE = process.env.REACT_APP_LOGIN_URL || 'https://localhost';
 
-async function loginUser(credentials) {
-	console.log(`login: ${LOGIN_BASE}/login`);
-
-	return fetch(`${LOGIN_BASE}/login`, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(credentials),
-	}).then((data) => data.json());
-}
-
-export default function Login({ setToken }) {
-	const [username, setUserName] = useState();
-	const [password, setPassword] = useState();
-
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		const token = await loginUser({
-			username,
-			password,
-		});
-		setToken(token);
-	};
+const Login = () => {
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
 
 	return (
-		<main className='container site-inner'>
-			<div className='login-wrapper'>
-				<h1>Please Log In</h1>
-				<p>
-					<a href='/signup'>Need to register?</a>
-				</p>
-				<form onSubmit={handleSubmit}>
-					<label>
-						<p>Username</p>
-						<input
-							type='text'
-							onChange={(e) => setUserName(e.target.value)}
-							autoComplete='username'
-						/>
-					</label>
-					<label>
-						<p>Password</p>
-						<input
-							type='password'
-							onChange={(e) => setPassword(e.target.value)}
-							autoComplete='password'
-						/>
-					</label>
-					<div>
-						<button type='submit'>Submit</button>
-					</div>
-				</form>
-			</div>
-		</main>
+		<>
+			<Form>
+				<FormGroup>
+					<Label for='email'>Email</Label>
+					<Input
+						id='email'
+						placeholder='Email'
+						type='email'
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
+					/>
+				</FormGroup>
+				<FormGroup>
+					<Label for='password'>Password</Label>
+					<Input
+						id='password'
+						placeholder='Password'
+						type='password'
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+					/>
+				</FormGroup>
+				<Button intent='primary' fill type='submit'>
+					Sign In
+				</Button>
+			</Form>
+		</>
 	);
-}
-
-Login.propTypes = {
-	setToken: PropTypes.func.isRequired,
 };
+
+export default Login;

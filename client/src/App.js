@@ -5,6 +5,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import './App.scss';
 
 import Login from './components/Login/Login';
+import LoginCard from './components/Login/LoginCard';
 import UseToken from './components/Login/UseToken';
 import NotFoundPage from './components/NotFoundPage';
 
@@ -36,6 +37,7 @@ const App = () => {
 		<div>
 			<Navbar />
 			<main className='container site-inner'>
+				<LoginCard />
 				<Routes>
 					<Route exact path='/' element={<WebtoonGalleryList />} />
 					<Route path='/gallery' element={<WebtoonGalleryList />} />
