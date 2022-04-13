@@ -6,7 +6,6 @@ const listGallery = require('../controller/gallery/listGallery');
 
 // Get a list of the webtoons
 galleryRoutes.route('/webtoonGallery').get((req, res) => {
-	// console.log(req);
 	listGallery(res);
 });
 

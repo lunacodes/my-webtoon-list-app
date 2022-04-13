@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import WebtoonListHeading from '../WebtoonListHeading';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
-const FETCH_URL = process.env.REACT_APP_FETCH_ENDPOINT;
 
 const Webtoon = (props) => (
 	<div className='image-container'>
@@ -28,13 +27,14 @@ const Webtoon = (props) => (
 	</div>
 );
 
-export default function WebtoonGalleryList() {
+export default function UserWebtoonList() {
 	const [webtoons, setWebtoons] = useState([]);
 
 	useEffect(() => {
 		async function getWebtoons() {
-			// console.log(`${FETCH_URL}/webtoonGallery`);
-			const response = await fetch(`${FETCH_URL}/webtoonGallery`, {
+			// const list_url = BASE_URL + '/webtoonGallery';
+			console.log(`${BASE_URL}/webtoonGallery`);
+			const response = await fetch(`${BASE_URL}/webtoonGallery`, {
 				mode: 'cors',
 			});
 
@@ -55,8 +55,9 @@ export default function WebtoonGalleryList() {
 
 	// This method will delete a webtoon
 	async function deleteWebtoon(id) {
-		const url = `${FETCH_URL}/${id}`;
-		await fetch(`${FETCH_URL}/${id}`, {
+		// const url = BASE_URL + id;
+		console.log(`${BASE_URL}/${id}`);
+		await fetch(`${BASE_URL}/${id}`, {
 			method: 'DELETE',
 			mode: 'cors',
 		});
@@ -68,7 +69,8 @@ export default function WebtoonGalleryList() {
 	// This method will map out the webtoons on the table
 	function webtoonList() {
 		return webtoons.map((webtoon) => {
-			const image = `${BASE_URL}/img/${webtoon.titleForSeo}.jpg`;
+			const image = BASE_URL + '/img/' + webtoon.titleForSeo + '.jpg';
+			// const image = `${BASE_URL}/img/${webtoon.titleForSeo}.jpg`;
 			return (
 				<Webtoon
 					webtoon={webtoon}
@@ -83,7 +85,7 @@ export default function WebtoonGalleryList() {
 	// This following section will display the table with the webtoons of individuals.
 	return (
 		<div className='webtoon-list-title-bar'>
-			<WebtoonListHeading heading='Webtoons' />
+			<WebtoonListHeading heading='Webtoon List' />
 			<a className='add-webtoon' href='/add'>
 				Add Webtoon
 			</a>

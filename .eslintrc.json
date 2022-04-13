@@ -15,7 +15,6 @@
   },
   "ignorePatterns": [".eslintrc.js"],
   "rules": {
-    "camelcase": "off",
     "capitalized-comments": "off",
     "comma-dangle": ["error", "only-multiline"],
     "dot-location": ["warn", "property"],
@@ -24,19 +23,14 @@
     "func-style": ["off"],
     "indent": ["error", "tab"],
     "jsx-quotes": ["error", "prefer-single"],
-    "max-len": "off",
     "max-lines-per-function": "off",
     "multiline-comment-style": "off",
     "no-console": "off",
     "no-tabs": "off",
     "no-magic-numbers": [
       "error",
-      { "ignore": [-1, 1000, 200, 201, 404, 500, 3000, 3001, 8080] }
+      { "ignore": [200, 201, 404, 500, 3001, 8080] }
     ],
-    "no-negated-condition": "off",
-    "no-ternary": "off",
-    "no-underscore-dangle": ["warn", { "allow": ["_id"] }],
-    "no-unneeded-ternary": "error",
     "object-curly-spacing": ["error", "always"],
     "object-property-newline": [
       "error",
@@ -47,7 +41,6 @@
     "quotes": ["error", "single"],
     "quote-props": "off",
     "semi": ["error", "always"],
-    "sort-keys": "warn",
     "space-before-function-paren": "off"
   }
 }

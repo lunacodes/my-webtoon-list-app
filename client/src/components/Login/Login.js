@@ -1,91 +1,66 @@
-import { Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap';
-import React, { useContext, useState } from 'react';
-import { UserContext } from '../../context/UserContext';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import './Login.css';
+const LOGIN_BASE = process.env.REACT_APP_LOGIN_URL || 'https://localhost';
 
-const Login = () => {
-	const [isSubmitting, setIsSubmitting] = useState(false);
-	const [error, setError] = useState('');
-	const [email, setEmail] = useState('');
-	const [password, setPassword] = useState('');
-	const [userContext, setUserContext] = useContext(UserContext);
+async function loginUser(credentials) {
+	console.log(`login: ${LOGIN_BASE}/login`);
 
-	const formSubmitHandler = (e) => {
+	return fetch(`${LOGIN_BASE}/login`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify(credentials),
+	}).then((data) => data.json());
+}
+
+export default function Login({ setToken }) {
+	const [username, setUserName] = useState();
+	const [password, setPassword] = useState();
+
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		setIsSubmitting(true);
-		setError('');
-
-		const genericErrorMessage = 'Something went wrong! Please try again later.';
-
-		fetch(process.env.REACT_APP_API_ENDPOINT + 'users/login', {
-			method: 'POST',
-			credentials: 'include',
-			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ username: email, password }),
-		})
-			.then(async (response) => {
-				setIsSubmitting(false);
-				if (!response.ok) {
-					if (response.status === 400) {
-						setError('Please fill all the fields correctly!');
-					} else if (response.status === 401) {
-						setError('Invalid email and password combination.');
-					} else {
-						setError(genericErrorMessage);
-					}
-				} else {
-					const data = await response.json();
-					setUserContext((oldValues) => {
-						return { ...oldValues, token: data.token };
-					});
-				}
-			})
-			.catch((error) => {
-				setIsSubmitting(false);
-				setError(genericErrorMessage);
-			});
+		const token = await loginUser({
+			username,
+			password,
+		});
+		setToken(token);
 	};
 
 	return (
-		<>
-			{error && <Alert variant='danger'>{error}</Alert>}
-			<p>
-				If you are currently seeing this form, feel free to enter{' '}
-				<pre>user@example.com</pre> and <pre>pass</pre> as the credentials. You
-				can also register your own account, via the Register tab
-			</p>
-
-			<Form onSubmit={formSubmitHandler} className='auth-form'>
-				<FormGroup>
-					<Label for='email'>Email</Label>
-					<Input
-						id='email'
-						placeholder='Email'
-						type='email'
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-					/>
-				</FormGroup>
-				<FormGroup>
-					<Label for='password'>Password</Label>
-					<Input
-						id='password'
-						placeholder='Password'
-						type='password'
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-					/>
-				</FormGroup>
-				<Button
-					variant='primary'
-					disabled={isSubmitting}
-					text={`${isSubmitting ? 'Signing In' : 'Sign In'}`}
-					type='submit'
-				>
-					Sign In
-				</Button>
-			</Form>
-		</>
+		<main className='container site-inner'>
+			<div className='login-wrapper'>
+				<h1>Please Log In</h1>
+				<p>
+					<a href='/signup'>Need to register?</a>
+				</p>
+				<form onSubmit={handleSubmit}>
+					<label>
+						<p>Username</p>
+						<input
+							type='text'
+							onChange={(e) => setUserName(e.target.value)}
+							autoComplete='username'
+						/>
+					</label>
+					<label>
+						<p>Password</p>
+						<input
+							type='password'
+							onChange={(e) => setPassword(e.target.value)}
+							autoComplete='password'
+						/>
+					</label>
+					<div>
+						<button type='submit'>Submit</button>
+					</div>
+				</form>
+			</div>
+		</main>
 	);
-};
+}
 
-export default Login;
+Login.propTypes = {
+	setToken: PropTypes.func.isRequired,
+};
