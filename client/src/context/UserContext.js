@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const UserContext = React.createContent([{}, () => {}]);
+const UserContext = React.createContext([{}, () => {}]);
 let initialState = {};
 
 const UserProvider = (props) => {

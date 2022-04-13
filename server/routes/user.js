@@ -12,6 +12,8 @@ const {
 	verifyUser,
 } = require('../authenticate');
 
+// console.log(COOKIE_OPTIONS);
+
 userRoutes.get('/me', verifyUser, (req, res, next) => {
 	res.send(req.user);
 });
@@ -34,6 +36,7 @@ userRoutes.get('/logout', verifyUser, (req, res, next) => {
 					res.statusCode = 500;
 					res.send(err);
 				} else {
+					// console.log(COOKIE_OPTIONS);
 					res.clearCookie('refreshToken', COOKIE_OPTIONS);
 					res.send({ success: true });
 				}
@@ -48,8 +51,8 @@ userRoutes.post('/signup', (req, res, next) => {
 	if (!req.body.firstName) {
 		res.statusCode = 500;
 		res.send({
-			message: 'The first name is required',
 			name: 'FirstNameError',
+			message: 'The first name is required',
 		});
 	} else {
 		User.register(
@@ -65,6 +68,7 @@ userRoutes.post('/signup', (req, res, next) => {
 					const token = getToken({ _id: user._id });
 					const refreshToken = getRefreshToken({ _id: user._id });
 					user.refreshToken.push({ refreshToken });
+					// console.log(COOKIE_OPTIONS);
 					user.save((err, user) => {
 						if (err) {
 							res.statusCode = 500;
@@ -86,10 +90,12 @@ userRoutes.post('/login', passport.authenticate('local'), (req, res, next) => {
 	User.findById(req.user._id).then((user) => {
 		user.refreshToken.push({ refreshToken });
 		user.save((err, user) => {
+			// console.log(COOKIE_OPTIONS);
 			if (err) {
 				res.statusCode = 500;
 				res.send(err);
 			} else {
+				// console.log(COOKIE_OPTIONS);
 				res.cookie('refreshToken', refreshToken, COOKIE_OPTIONS);
 				res.send({ success: true, token });
 			}

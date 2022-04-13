@@ -17,7 +17,6 @@ if (process.env.NODE_ENV !== 'production') {
 }
 const PORT = process.env.PORT || 3001;
 const LOGIN_PORT = process.env.LOGIN_PORT || 8080;
-const session_token = process.env.TOKEN;
 
 require('./utils/connectDb');
 
@@ -41,9 +40,12 @@ const whitelist = process.env.WHITELISTED_DOMAINS
 	? process.env.WHITELISTED_DOMAINS.split(',')
 	: [];
 
+// console.log(whitelist);
+
 const corsOptions = {
 	origin: (origin, callback) => {
 		if (!origin || whitelist.indexOf(origin) !== -1) {
+			// console.log("We're ok");
 			callback(null, true);
 		} else {
 			callback(new Error('Not allowed by CORS'));
@@ -67,16 +69,6 @@ const loginServer = login.listen(LOGIN_PORT || 8080, () => {
 	console.log('Login server running on port:', port);
 });
 
-// login.use('/login', (req, res) => {
-// 	res.send({
-// 		token: session_token,
-// 	});
-// });
-
-// login.listen(LOGIN_PORT, () => {
-// 	console.log(`Login is running on port ${LOGIN_PORT}`);
-// });
-
 // Main React App
 app.use(cors());
 app.use(express.json());
@@ -88,9 +80,9 @@ app.use(require('./routes/gallery'));
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
 // Handle GET requests to /api route
-app.get('/api', (req, res) => {
-	res.json({ message: 'Hello from server!' });
-});
+// app.get('/api', (req, res) => {
+// 	res.json({ message: 'Hello from server!' });
+// });
 
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
@@ -100,3 +92,13 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`);
 });
+
+// login.use('/login', (req, res) => {
+// 	res.send({
+// 		token: session_token,
+// 	});
+// });
+
+// login.listen(LOGIN_PORT, () => {
+// 	console.log(`Login is running on port ${LOGIN_PORT}`);
+// });
