@@ -10,6 +10,7 @@ import './App.scss';
 import Welcome from './components/Welcome';
 import Login from './components/Login/Login';
 import LoginCard from './components/Login/LoginCard';
+// import LogoutHandler from './components/Login/Logout';
 // import UseToken from './components/Login/UseToken';
 import NotFoundPage from './components/NotFoundPage';
 
@@ -68,8 +69,7 @@ const App = () => {
 		<div>
 			<Navbar />
 			<main className='container site-inner'>
-				{/* <LoginCard /> */}
-				<Welcome />;
+				<Welcome />
 				<Routes>
 					<Route exact path='/' element={<WebtoonGalleryList />} />
 					<Route path='/gallery' element={<WebtoonGalleryList />} />
@@ -78,6 +78,7 @@ const App = () => {
 					<Route path='/add' element={<UserAddWebtoon />} />
 					<Route path='/signup' element={<AddUser />} />
 					<Route path='/login' element={<LoginCard />} />
+					{/* <Route path='/logout' element={<LogoutHandler />} /> */}
 					<Route path='*' element={<NotFoundPage />} />
 				</Routes>
 			</main>

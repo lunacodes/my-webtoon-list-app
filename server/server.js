@@ -40,8 +40,6 @@ const whitelist = process.env.WHITELISTED_DOMAINS
 	? process.env.WHITELISTED_DOMAINS.split(',')
 	: [];
 
-// console.log(whitelist);
-
 const corsOptions = {
 	origin: (origin, callback) => {
 		if (!origin || whitelist.indexOf(origin) !== -1) {
@@ -65,7 +63,6 @@ login.get('/', (req, res) => {
 // Does this really need to be in a const variable??
 const loginServer = login.listen(LOGIN_PORT || 8080, () => {
 	const { port } = loginServer.address();
-	// const port = loginServer.address().port;
 	console.log('Login server running on port:', port);
 });
 
@@ -79,11 +76,6 @@ app.use(require('./routes/gallery'));
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
-// Handle GET requests to /api route
-// app.get('/api', (req, res) => {
-// 	res.json({ message: 'Hello from server!' });
-// });
-
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
 	res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
@@ -92,13 +84,3 @@ app.get('*', (req, res) => {
 app.listen(PORT, () => {
 	console.log(`Server is running on port ${PORT}`);
 });
-
-// login.use('/login', (req, res) => {
-// 	res.send({
-// 		token: session_token,
-// 	});
-// });
-
-// login.listen(LOGIN_PORT, () => {
-// 	console.log(`Login is running on port ${LOGIN_PORT}`);
-// });
