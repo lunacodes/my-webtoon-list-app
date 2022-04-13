@@ -1,20 +1,34 @@
 const path = require('path');
 const express = require('express');
-const app = express();
-const login = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const passport = require('passport');
+const app = express();
+const login = express();
 
+/**
+ * Environment Variables
+ */
 // require('dotenv').config({ path: './config.env' });
 if (process.env.NODE_ENV !== 'production') {
 	// Load environment variables from .env file in non prod environments
 	require('dotenv').config({ path: './config.env' });
 }
-require('./utils/connectdb');
 const PORT = process.env.PORT || 3001;
 const LOGIN_PORT = process.env.LOGIN_PORT || 8080;
 const session_token = process.env.TOKEN;
+
+require('./utils/connectdb');
+
+/**
+ * Strategies
+ */
+require('./strategies/JwtStrategy');
+require('./strategies/LocalStrategy');
+require('./authenticate');
+
+const userRouter = require('./routes/user');
 
 /**
  * Login Service
@@ -39,13 +53,15 @@ const corsOptions = {
 };
 
 login.use(cors(corsOptions));
+login.use(passport.initialize());
+login.use('/users', userRouter);
 
 login.get('/', (req, res) => {
 	res.send({ status: 'success' });
 });
 
 // Does this really need to be in a const variable??
-const loginServer = login.listen(process.env.LOGIN_PORT || 8080, () => {
+const loginServer = login.listen(LOGIN_PORT || 8080, () => {
 	const { port } = loginServer.address();
 	// const port = loginServer.address().port;
 	console.log('Login server running on port:', port);
