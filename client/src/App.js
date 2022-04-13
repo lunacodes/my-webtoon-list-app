@@ -8,7 +8,6 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import { Col, Row } from 'reactstrap';
 import './App.scss';
 
-// import Welcome from './components/Welcome';
 import LoginCard from './components/Login/LoginCard';
 import Loader from './components/Loader';
 
@@ -18,7 +17,6 @@ import WebtoonGalleryList from './components/Webtoons/Gallery/WebtoonGalleryList
 import UserWebtoonList from './components/Webtoons/User/WebtoonList';
 import UserEditWebtoon from './components/Webtoons/User/EditWebtoon';
 import UserAddWebtoon from './components/Webtoons/User/AddWebtoon';
-// import AddUser from './components/User/AddUser';
 import Register from './components/User/Register';
 
 const App = () => {
