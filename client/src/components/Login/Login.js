@@ -71,8 +71,8 @@ const Login = () => {
 				</FormGroup>
 				<Button
 					variant='primary'
-					// disabled={isSubmitting}
-					// text={`${isSubmitting ? 'Signing In' : 'Sign In'}`}
+					disabled={isSubmitting}
+					text={`${isSubmitting ? 'Signing In' : 'Sign In'}`}
 					type='submit'
 				>
 					Sign In
