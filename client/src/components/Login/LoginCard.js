@@ -57,7 +57,7 @@ export default class LoginCard extends React.Component {
 				<TabContent activeTab={this.state.activeTab}>
 					<TabPane tabId='1'>
 						<Row>
-							<Col sm='6'>
+							<Col sm='12'>
 								<h4>Login</h4>
 								<Login />
 							</Col>
@@ -65,7 +65,7 @@ export default class LoginCard extends React.Component {
 					</TabPane>
 					<TabPane tabId='2'>
 						<Row>
-							<Col sm='6'>
+							<Col sm='12'>
 								<h4>Register</h4>
 								<Register />
 							</Col>

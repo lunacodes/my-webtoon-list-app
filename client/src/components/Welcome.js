@@ -75,7 +75,7 @@ const Welcome = () => {
 			<div className='user-details'>
 				<div>
 					<p>
-						Welcome&nbsp;
+						Welcome &nbsp;
 						<strong>
 							{userContext.details.firstName}
 							{userContext.details.lastName &&
