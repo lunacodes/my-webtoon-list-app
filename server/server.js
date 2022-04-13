@@ -11,10 +11,11 @@ const login = express();
  * Environment Variables
  */
 // require('dotenv').config({ path: './config.env' });
-if (process.env.NODE_ENV !== 'production') {
-	// Load environment variables from .env file in non prod environments
-	require('dotenv').config({ path: './config.env' });
-}
+// if (process.env.NODE_ENV !== 'production') {
+// Load environment variables from .env file in non prod environments
+// require('dotenv').config({ path: './config.env' });
+// }
+require('dotenv').config();
 const PORT = process.env.PORT || 3001;
 const LOGIN_PORT = process.env.LOGIN_PORT || 8080;
 
@@ -35,7 +36,7 @@ const userRouter = require('./routes/user');
 login.use(bodyParser.json());
 login.use(cookieParser(process.env.COOKIE_SECRET));
 
-//Add the client URL to the CORS policy
+// Add the client URL to the CORS policy
 const whitelist = process.env.WHITELISTED_DOMAINS
 	? process.env.WHITELISTED_DOMAINS.split(',')
 	: [];
@@ -82,5 +83,6 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
+	console.log();
 	console.log(`Server is running on port ${PORT}`);
 });
