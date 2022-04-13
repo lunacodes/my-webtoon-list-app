@@ -18,10 +18,10 @@ import WebtoonGalleryList from './components/Webtoons/Gallery/WebtoonGalleryList
 import UserWebtoonList from './components/Webtoons/User/WebtoonList';
 import UserEditWebtoon from './components/Webtoons/User/EditWebtoon';
 import UserAddWebtoon from './components/Webtoons/User/AddWebtoon';
-import AddUser from './components/User/AddUser';
+// import AddUser from './components/User/AddUser';
+import Register from './components/User/Register';
 
 const App = () => {
-	// const [currentTab, setCurrentTab] = useState('login');
 	const [userContext, setUserContext] = useContext(UserContext);
 
 	const verifyUser = useCallback(() => {
@@ -68,25 +68,28 @@ const App = () => {
 	}, [syncLogout]);
 
 	return userContext.token === null ? (
-		<main className='container site-inner'>
-			<Row>
-				<Col sm='6'>
-					<LoginCard />
-				</Col>
-			</Row>
-		</main>
+		<div>
+			<Navbar />
+			<main className='container site-inner'>
+				<Row>
+					<Col sm='6'>
+						<LoginCard />
+					</Col>
+				</Row>
+			</main>
+		</div>
 	) : userContext.token ? (
 		<div>
 			<Navbar />
 			<main className='container site-inner'>
-				<Welcome />
+				{/* <Welcome /> */}
 				<Routes>
 					<Route exact path='/' element={<WebtoonGalleryList />} />
 					<Route path='/gallery' element={<WebtoonGalleryList />} />
 					<Route path='/profile' element={<UserWebtoonList />} />
 					<Route path='/edit/:id' element={<UserEditWebtoon />} />
 					<Route path='/add' element={<UserAddWebtoon />} />
-					<Route path='/signup' element={<AddUser />} />
+					<Route path='/signup' element={<Register />} />
 					<Route path='/login' element={<LoginCard />} />
 					<Route path='*' element={<NotFoundPage />} />
 				</Routes>
