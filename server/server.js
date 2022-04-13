@@ -3,22 +3,63 @@ const express = require('express');
 const app = express();
 const login = express();
 const cors = require('cors');
-require('dotenv').config({ path: './config.env' });
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+
+// require('dotenv').config({ path: './config.env' });
+if (process.env.NODE_ENV !== 'production') {
+	// Load environment variables from .env file in non prod environments
+	require('dotenv').config({ path: './config.env' });
+}
+require('./utils/connectdb');
 const PORT = process.env.PORT || 3001;
 const LOGIN_PORT = process.env.LOGIN_PORT || 8080;
 const session_token = process.env.TOKEN;
 
-// Login Service
-login.use(cors());
-login.use('/login', (req, res) => {
-	res.send({
-		token: session_token,
-	});
+/**
+ * Login Service
+ */
+login.use(bodyParser.json());
+login.use(cookieParser(process.env.COOKIE_SECRET));
+
+//Add the client URL to the CORS policy
+const whitelist = process.env.WHITELISTED_DOMAINS
+	? process.env.WHITELISTED_DOMAINS.split(',')
+	: [];
+
+const corsOptions = {
+	origin: (origin, callback) => {
+		if (!origin || whitelist.indexOf(origin) !== -1) {
+			callback(null, true);
+		} else {
+			callback(new Error('Not allowed by CORS'));
+		}
+	},
+	credentials: true,
+};
+
+login.use(cors(corsOptions));
+
+login.get('/', (req, res) => {
+	res.send({ status: 'success' });
 });
 
-login.listen(LOGIN_PORT, () => {
-	console.log(`Login is running on port ${LOGIN_PORT}`);
+// Does this really need to be in a const variable??
+const loginServer = login.listen(process.env.LOGIN_PORT || 8080, () => {
+	const { port } = loginServer.address();
+	// const port = loginServer.address().port;
+	console.log('Login server running on port:', port);
 });
+
+// login.use('/login', (req, res) => {
+// 	res.send({
+// 		token: session_token,
+// 	});
+// });
+
+// login.listen(LOGIN_PORT, () => {
+// 	console.log(`Login is running on port ${LOGIN_PORT}`);
+// });
 
 // Main React App
 app.use(cors());
