@@ -25,11 +25,7 @@ export default function Navbar() {
 				<div className='collapse navbar-collapse' id='topNav'>
 					<ul className='nav navbar-nav ms-auto mt-2 mt-lg-0'>
 						<li className='nav-item'>
-							<NavLink
-								className='nav-link'
-								to='/'
-								onClick={() => localStorage.removeItem('token')}
-							>
+							<NavLink className='nav-link' to='/logout'>
 								Logout
 							</NavLink>
 						</li>
