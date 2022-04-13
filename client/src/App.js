@@ -8,7 +8,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import { Col, Row } from 'reactstrap';
 import './App.scss';
 
-import Welcome from './components/Welcome';
+// import Welcome from './components/Welcome';
 import LoginCard from './components/Login/LoginCard';
 import Loader from './components/Loader';
 
