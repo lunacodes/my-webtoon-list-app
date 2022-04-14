@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import WebtoonListHeading from '../WebtoonListHeading';
+import Welcome from '../../Welcome';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const Webtoon = (props) => (
@@ -80,23 +81,26 @@ export default function UserWebtoonList() {
 
 	// This following section will display the table with the webtoons of individuals.
 	return (
-		<div className='webtoon-list-title-bar'>
-			<WebtoonListHeading heading='Webtoon List' />
-			<a className='add-webtoon' href='/add'>
-				Add Webtoon
-			</a>
-			<table className='table table-striped' style={{ marginTop: 20 }}>
-				<thead>
-					<tr>
-						<th>Image</th>
-						<th>Title</th>
-						<th>Score</th>
-						<th>Progress</th>
-						<th>Tags</th>
-					</tr>
-				</thead>
-				<tbody>{webtoonList()}</tbody>
-			</table>
-		</div>
+		<>
+			<Welcome />
+			<div className='webtoon-list-title-bar'>
+				<WebtoonListHeading heading='Webtoon List' />
+				<a className='add-webtoon' href='/add'>
+					Add Webtoon
+				</a>
+				<table className='table table-striped' style={{ marginTop: 20 }}>
+					<thead>
+						<tr>
+							<th>Image</th>
+							<th>Title</th>
+							<th>Score</th>
+							<th>Progress</th>
+							<th>Tags</th>
+						</tr>
+					</thead>
+					<tbody>{webtoonList()}</tbody>
+				</table>
+			</div>
+		</>
 	);
 }

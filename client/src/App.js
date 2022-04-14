@@ -52,7 +52,7 @@ const App = () => {
 	 */
 	const syncLogout = useCallback((event) => {
 		if (event.key === 'logout') {
-			window.history.push('/');
+			window.location.replace('/');
 		}
 	}, []);
 
@@ -78,7 +78,6 @@ const App = () => {
 		<div>
 			<Navbar />
 			<main className='container site-inner'>
-				{/* <Welcome /> */}
 				<Routes>
 					<Route exact path='/' element={<WebtoonGalleryList />} />
 					<Route path='/gallery' element={<WebtoonGalleryList />} />

@@ -36,6 +36,21 @@ const Welcome = () => {
 		});
 	}, [setUserContext, userContext.token]);
 
+	useEffect(() => {
+		// fetch only when user details are not present
+		if (!userContext.details) {
+			fetchUserDetails();
+		}
+	}, [userContext.details, fetchUserDetails]);
+
+	const refetchHandler = () => {
+		// set details to undefined so that spinner will be displayed and
+		// fetchUserDetails will be invoked from useEffect
+		setUserContext((oldValues) => {
+			return { ...oldValues, details: undefined };
+		});
+	};
+
 	const logoutHandler = () => {
 		fetch(process.env.REACT_APP_API_ENDPOINT + 'users/logout', {
 			credentials: 'include',
@@ -48,21 +63,6 @@ const Welcome = () => {
 				return { ...oldValues, details: undefined, token: null };
 			});
 			window.localStorage.setItem('logout', Date.now());
-		});
-	};
-
-	useEffect(() => {
-		// fetch only when user details are not present
-		if (!userContext.details) {
-			fetchUserDetails();
-		}
-	}, [userContext.details, fetchUserDetails]);
-
-	const refetchHandler = () => {
-		// set details to undefined so that spinner will be displayed and
-		//  fetchUserDetails will be invoked from useEffect
-		setUserContext((oldValues) => {
-			return { ...oldValues, details: undefined };
 		});
 	};
 
