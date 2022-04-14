@@ -35,6 +35,7 @@ const Login = () => {
 				} else {
 					const data = await response.json();
 					setUserContext((oldValues) => {
+						window.localStorage.removeItem('logout');
 						return { ...oldValues, token: data.token };
 					});
 				}
