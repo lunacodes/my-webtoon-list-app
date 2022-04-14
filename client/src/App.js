@@ -52,7 +52,7 @@ const App = () => {
 	 */
 	const syncLogout = useCallback((event) => {
 		if (event.key === 'logout') {
-			window.location.replace('/');
+			window.location.reload();
 		}
 	}, []);
 
