@@ -95,8 +95,8 @@ const Register = () => {
 				</FormGroup>
 				<Button
 					variant='primary'
-					// disabled={isSubmitting}
-					// text={`${isSubmitting ? 'Registering' : 'Register'}`}
+					disabled={isSubmitting}
+					text={`${isSubmitting ? 'Registering' : 'Register'}`}
 					type='submit'
 				>
 					Register

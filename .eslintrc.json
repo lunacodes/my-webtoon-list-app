@@ -47,7 +47,8 @@
     "quotes": ["error", "single"],
     "quote-props": "off",
     "semi": ["error", "always"],
-    "sort-keys": "warn",
+    // "sort-keys": ["warn", "asc", { "minKeys": 5 }],
+    "sort-keys": "off",
     "space-before-function-paren": "off"
   }
 }

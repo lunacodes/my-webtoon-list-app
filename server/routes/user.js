@@ -3,7 +3,6 @@ const userRoutes = express.Router();
 const User = require('../models/User');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
-// const ObjectId = require('mongodb').ObjectId;
 
 const {
 	getToken,
@@ -12,13 +11,11 @@ const {
 	verifyUser,
 } = require('../authenticate');
 
-// console.log(COOKIE_OPTIONS);
-
 userRoutes.get('/me', verifyUser, (req, res, next) => {
 	res.send(req.user);
 });
 
-userRoutes.get('/logout', verifyUser, (req, res, next) => {
+userRoutes.get(['/logout', '../logout'], verifyUser, (req, res, next) => {
 	const { signedCookies = {} } = req;
 	const { refreshToken } = signedCookies;
 	User.findById(req.user._id).then(
@@ -31,7 +28,7 @@ userRoutes.get('/logout', verifyUser, (req, res, next) => {
 				user.refreshToken.id(user.refreshToken[tokenIndex]._id).remove();
 			}
 
-			user.save((err, user) => {
+			user.save((err, usr) => {
 				if (err) {
 					res.statusCode = 500;
 					res.send(err);
@@ -67,11 +64,10 @@ userRoutes.post('/signup', (req, res, next) => {
 					const token = getToken({ _id: user._id });
 					const refreshToken = getRefreshToken({ _id: user._id });
 					user.refreshToken.push({ refreshToken });
-					// console.log(COOKIE_OPTIONS);
-					user.save((err, user) => {
-						if (err) {
+					user.save((error, usr) => {
+						if (error) {
 							res.statusCode = 500;
-							res.send(err);
+							res.send(error);
 						} else {
 							res.cookie('refreshToken', refreshToken, COOKIE_OPTIONS);
 							res.send({ success: true, token });
@@ -86,21 +82,21 @@ userRoutes.post('/signup', (req, res, next) => {
 userRoutes.post('/login', passport.authenticate('local'), (req, res, next) => {
 	const token = getToken({ _id: req.user._id });
 	const refreshToken = getRefreshToken({ _id: req.user._id });
-	User.findById(req.user._id).then((user) => {
-		user.refreshToken.push({ refreshToken });
-		user.save((err, user) => {
-			// console.log(COOKIE_OPTIONS);
-			if (err) {
-				res.statusCode = 500;
-				res.send(err);
-			} else {
-				// console.log(COOKIE_OPTIONS);
-				res.cookie('refreshToken', refreshToken, COOKIE_OPTIONS);
-				res.send({ success: true, token });
-			}
-		});
-	}),
-		(err) => next(err);
+	User.findById(req.user._id).then(
+		(user) => {
+			user.refreshToken.push({ refreshToken });
+			user.save((err, usr) => {
+				if (err) {
+					res.statusCode = 500;
+					res.send(err);
+				} else {
+					res.cookie('refreshToken', refreshToken, COOKIE_OPTIONS);
+					res.send({ success: true, token });
+				}
+			});
+		},
+		(err) => next(err)
+	);
 });
 
 userRoutes.post('/refreshToken', (req, res, next) => {
@@ -128,10 +124,10 @@ userRoutes.post('/refreshToken', (req, res, next) => {
 							res.send('Unauthorized');
 						} else {
 							const token = getToken({ _id: userId });
-							// If refresh token exists, create new one and replace it
+							// If the refresh token exists, then create new one and replace it.
 							const newRefreshToken = getRefreshToken({ _id: userId });
 							user.refreshToken[tokenIndex] = { refreshToken: newRefreshToken };
-							user.save((err, user) => {
+							user.save((err, usr) => {
 								if (err) {
 									res.statusCode = 500;
 									res.send(err);
@@ -146,9 +142,7 @@ userRoutes.post('/refreshToken', (req, res, next) => {
 						res.send('Unauthorized');
 					}
 				},
-				(err) => {
-					next(err);
-				}
+				(err) => next(err)
 			);
 		} catch (err) {
 			res.statusCode = 401;
@@ -161,34 +155,3 @@ userRoutes.post('/refreshToken', (req, res, next) => {
 });
 
 module.exports = userRoutes;
-
-// Original User Routes
-// const addUser = require('../controller/users/addUser');
-// const updateUserById = require('../controller/users/updateUserById');
-
-// // Create a new user
-// userRoutes.route('/user/add').post((req, res) => {
-// 	let name_first = req.body.name_first;
-// 	let name_last = req.body.name_last;
-// 	let username = req.body.username;
-// 	let pass = req.body.pass;
-//
-// 	addUser(res, name_first, name_last, username, pass);
-// });
-//
-// // Update a user entry by id
-// userRoutes.route('/users/update/:id').post((req, res) => {
-// 	let myId = { _id: ObjectId(req.params.id) };
-// 	let newValues = {
-// 		$set: {
-// 			name_first: req.body.name_first,
-// 			name_last: req.body.name_last,
-// 			username: req.body.username,
-// 			pass: req.body.pass,
-// 		},
-// 	};
-//
-// 	updateUserById(res, myId, newValues);
-// });
-
-// module.exports = userRoutes;

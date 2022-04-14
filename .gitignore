@@ -1,4 +1,12 @@
-.gitignore
-node_modules
-*.env
 *.bak
+*.env
+*.pem
+_archive/
+_sample_data
+_scratch*
+.gitignore
+.vscode/
+HOWTO.md
+node_modules
+tests/
+views/
