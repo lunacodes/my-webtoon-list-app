@@ -1,14 +1,16 @@
-/* eslint-disable */
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const dev = process.env.NODE_ENV !== 'production';
+
+console.log(!dev);
 
 exports.COOKIE_OPTIONS = {
 	httpOnly: true,
 	// Since localhost is not having https protocol,
 	// secure cookies do not work correctly (in postman)
-	// secure: !dev,
-	secure: true,
+	'Access-Control-Allow-Origin': `${process.env.ALLOWED_ORIGIN}`,
+	secure: !dev,
+	// secure: true,
 	signed: true,
 	maxAge: eval(process.env.REFRESH_TOKEN_EXPIRY) * 1000,
 	sameSite: 'none',

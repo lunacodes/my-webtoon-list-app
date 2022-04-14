@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect } from 'react';
 import { UserContext } from './context/UserContext';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -50,7 +50,6 @@ const App = () => {
 	/**
 	 * Sync logout across tabs
 	 */
-
 	const syncLogout = useCallback((event) => {
 		if (event.key === 'logout') {
 			window.history.push('/');
@@ -59,9 +58,8 @@ const App = () => {
 
 	useEffect(() => {
 		window.addEventListener('storage', syncLogout);
-
 		return () => {
-			window.removeEventListner('storage', syncLogout);
+			window.removeEventListener('storage', syncLogout);
 		};
 	}, [syncLogout]);
 

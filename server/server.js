@@ -10,11 +10,6 @@ const login = express();
 /**
  * Environment Variables
  */
-// require('dotenv').config({ path: './config.env' });
-// if (process.env.NODE_ENV !== 'production') {
-// Load environment variables from .env file in non prod environments
-// require('dotenv').config({ path: './config.env' });
-// }
 require('dotenv').config();
 const PORT = process.env.PORT || 3001;
 const LOGIN_PORT = process.env.LOGIN_PORT || 8080;

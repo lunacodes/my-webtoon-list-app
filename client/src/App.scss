@@ -12,7 +12,7 @@
   margin: 100px auto;
 }
 
-pre {
+.highlight {
   display: inline;
   background: #333;
   color: aliceblue;
@@ -24,6 +24,7 @@ pre {
   display: flex;
   justify-content: space-between;
 }
+
 .user-actions {
   display: flex;
   flex-direction: column;
