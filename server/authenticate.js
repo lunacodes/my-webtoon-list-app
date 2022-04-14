@@ -2,10 +2,8 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const dev = process.env.NODE_ENV !== 'production';
 
-console.log(!dev);
-
 exports.COOKIE_OPTIONS = {
-	'Access-Control-Allow-Origin': `${process.env.ALLOWED_ORIGIN}`,
+	// 'Access-Control-Allow-Origin': `${process.env.ALLOWED_ORIGIN}`,
 	httpOnly: true,
 	// Since localhost is not having https protocol,
 	// secure cookies do not work correctly (in postman)

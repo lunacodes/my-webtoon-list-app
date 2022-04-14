@@ -39,7 +39,6 @@ const whitelist = process.env.WHITELISTED_DOMAINS
 const corsOptions = {
 	origin: (origin, callback) => {
 		if (!origin || whitelist.indexOf(origin) !== -1) {
-			// console.log("We're ok");
 			callback(null, true);
 		} else {
 			callback(new Error('Not allowed by CORS'));
@@ -78,6 +77,5 @@ app.get('*', (req, res) => {
 });
 
 app.listen(PORT, () => {
-	console.log();
 	console.log(`Server is running on port ${PORT}`);
 });
