@@ -50,8 +50,9 @@ const Login = () => {
 			{error && <Alert variant='danger'>{error}</Alert>}
 			<p>
 				If you are currently seeing this form, feel free to enter{' '}
-				<pre>user@example.com</pre> and <pre>pass</pre> as the credentials. You
-				can also register your own account, via the Register tab
+				<span className='highlight'>user@example.com</span> and{' '}
+				<span className='highlight'>pass</span> as the credentials. You can also
+				register your own account, via the Register tab
 			</p>
 
 			<Form onSubmit={formSubmitHandler} className='auth-form'>

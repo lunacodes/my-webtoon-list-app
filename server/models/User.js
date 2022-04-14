@@ -2,13 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
-// const User = new Schema({
-// 	name_first: String,
-// 	name_last: String,
-// 	username: String,
-// 	pass: String,
-// });
-
 const Session = new Schema({
 	refreshToken: {
 		type: String,
