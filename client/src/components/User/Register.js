@@ -1,6 +1,6 @@
 import { Alert, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import React, { useContext, useState } from 'react';
-import { UserContext } from '../../context/UserContext';
+import { UserContext } from '@Context/UserContext';
 
 const Register = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false);

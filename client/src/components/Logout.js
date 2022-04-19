@@ -1,7 +1,7 @@
 import { Button, Card } from 'reactstrap';
 import React, { useCallback, useContext, useEffect } from 'react';
-import { UserContext } from '../context/UserContext';
-import Loader from './Loader';
+import { UserContext } from '@Context/UserContext';
+import Loader from '@Components/Loader';
 
 const Logout = () => {
 	const [userContext, setUserContext] = useContext(UserContext);

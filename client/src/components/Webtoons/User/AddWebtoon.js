@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
-import WebtoonListHeading from '../WebtoonListHeading';
-import UserWebtoonEntryForm from './WebtoonEntryForm';
+import WebtoonListHeading from '@Webtoon_Components/WebtoonListHeading';
+import UserWebtoonEntryForm from '@User_Components/WebtoonEntryForm';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 export default function UserAddWebtoon() {

@@ -1,22 +1,22 @@
 import React, { useCallback, useContext, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { UserContext } from './context/UserContext';
+import { UserContext } from '@Context/UserContext';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import { Col, Row } from 'reactstrap';
 import './App.scss';
 
-import LoginCard from './components/Login/LoginCard';
-import Loader from './components/Loader';
+import LoginCard from '@Components/Login/LoginCard';
+import Loader from '@Components/Loader';
 
-import NotFoundPage from './components/NotFoundPage';
-import Navbar from './components/Navbar';
-import WebtoonGalleryList from './components/Webtoons/Gallery/WebtoonGalleryList';
-import UserWebtoonList from './components/Webtoons/User/WebtoonList';
-import UserEditWebtoon from './components/Webtoons/User/EditWebtoon';
-import UserAddWebtoon from './components/Webtoons/User/AddWebtoon';
-import Register from './components/User/Register';
+import NotFoundPage from '@Components/NotFoundPage';
+import Navbar from '@Components/Navbar';
+import WebtoonGalleryList from '@Components/Webtoons/Gallery/WebtoonGalleryList';
+import UserWebtoonList from '@Components/Webtoons/User/WebtoonList';
+import UserEditWebtoon from '@Components/Webtoons/User/EditWebtoon';
+import UserAddWebtoon from '@Components/Webtoons/User/AddWebtoon';
+import Register from '@Components/User/Register';
 
 const App = () => {
 	const [userContext, setUserContext] = useContext(UserContext);

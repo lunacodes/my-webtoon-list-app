@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import WebtoonListHeading from '../WebtoonListHeading';
+import WebtoonListHeading from '@Webtoon_Components/WebtoonListHeading';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 const FETCH_URL = process.env.REACT_APP_FETCH_ENDPOINT;
 
