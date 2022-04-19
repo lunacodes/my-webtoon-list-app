@@ -3,15 +3,17 @@ const jwt = require('jsonwebtoken');
 const dev = process.env.NODE_ENV !== 'production';
 
 exports.COOKIE_OPTIONS = {
-	'Access-Control-Allow-Origin': '*',
+	'Access-Control-Allow-Origin': '${ALLOWED_DOMAIN}',
 	'Access-Control-Allow-Headers': 'Accept',
+	'Access-Control-Allow-Credentials': true,
+	'Access-Control-Allow-Methods': 'GET, POST, OPTIONS, PUT, PATCH, DELETE',
 	httpOnly: true,
 	// Since localhost is not having https protocol,
 	// secure cookies do not work correctly (in postman)
-	secure: true,
+	secure: false,
 	signed: true,
 	maxAge: eval(process.env.REFRESH_TOKEN_EXPIRY) * 1000,
-	sameSite: 'none',
+	sameSite: false,
 };
 
 exports.getToken = (user) => {
