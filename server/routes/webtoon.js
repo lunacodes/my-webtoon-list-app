@@ -1,9 +1,10 @@
+require('module-alias/register');
 const express = require('express');
-const addWebtoon = require('../controller/webtoons/addWebtoon');
-const listWebtoons = require('../controller/webtoons/listWebtoons');
-const findWebtoonById = require('../controller/webtoons/findWebtoonById');
-const updateWebtoonById = require('../controller/webtoons/updateWebtoonById');
-const deleteWebtoonById = require('../controller/webtoons/deleteWebtoonById');
+const addWebtoon = require('@web_controls/addWebtoon');
+const listWebtoons = require('@web_controls/listWebtoons');
+const findWebtoonById = require('@web_controls/findWebtoonById');
+const updateWebtoonById = require('@web_controls/updateWebtoonById');
+const deleteWebtoonById = require('@web_controls/deleteWebtoonById');
 
 // Instance of the Express router (which controls the requests)
 // We use this to define our roles

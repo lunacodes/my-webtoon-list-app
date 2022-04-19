@@ -15,6 +15,14 @@
     "test": "mocha --recursive --exit",
     "test:watch": "npm run test -- --watch"
   },
+  "_moduleAliases": {
+    "@context": "server/context",
+    "@models": "server/models",
+    "@gallery_controls": "server/controller/gallery/",
+    "@web_controls": "server/controller/webtoons/",
+    "@deep": "src/some/very/deep/directory/or/file",
+    "@my_module": "lib/some-file.js"
+  },
   "jest": {
     "verbose": true
   },
@@ -34,6 +42,7 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
+    "module-alias": "^2.2.2",
     "mongodb": "^4.4.1",
     "mongoose": "^6.2.11",
     "passport": "^0.5.2",
