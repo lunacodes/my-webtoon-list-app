@@ -55,7 +55,6 @@ export default function WebtoonGalleryList() {
 
 	// This method will delete a webtoon
 	async function deleteWebtoon(id) {
-		const url = `${FETCH_URL}/${id}`;
 		await fetch(`${FETCH_URL}/${id}`, {
 			method: 'DELETE',
 			mode: 'cors',
