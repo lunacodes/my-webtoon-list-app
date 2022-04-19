@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useCallback, useContext, useEffect } from 'react';
 import { UserContext } from './context/UserContext';
 
 import 'bootstrap/dist/css/bootstrap.css';
@@ -65,7 +64,7 @@ const App = () => {
 
 	return userContext.token === null ? (
 		<div>
-			<Navbar />
+			{/* <Logout /> */}
 			<main className='container site-inner'>
 				<Row>
 					<Col sm='6'>

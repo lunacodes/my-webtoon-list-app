@@ -1,11 +1,14 @@
 .navbar-nav {
+  background: #483d8b;
   padding: 0 20px 0 0;
 }
 
 .nav-wrap,
 .top-nav,
 .nav-item {
-  background-color: #f4f4f4;
+  // background-color: #f4f4f4;
+  background: #483d8b;
+  color: #fff;
 }
 
 .top-nav {
@@ -21,4 +24,33 @@
   max-width: initial;
   padding: 0 1rem;
   width: 1320px;
+}
+
+.navbar-light {
+  .navbar-brand {
+    font-weight: 600;
+  }
+
+  .navbar-brand,
+  .navbar-nav {
+    color: #fff;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: #fff;
+    }
+
+    .nav-link,
+    .show > .nav-link,
+    .nav-link.active {
+      color: #fff;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: #fff;
+      }
+    }
+  }
 }

@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import Logout from './Logout';
 
-export default function Navbar() {
+const Navbar = () => {
 	return (
 		<nav
 			className='container navbar navbar-expand-lg navbar-light top-nav sticky-top'
@@ -25,9 +26,10 @@ export default function Navbar() {
 				<div className='collapse navbar-collapse' id='topNav'>
 					<ul className='nav navbar-nav ms-auto mt-2 mt-lg-0'>
 						<li className='nav-item'>
-							<NavLink className='nav-link' to='/logout'>
+							<Logout />
+							{/* <NavLink className='nav-link' to='/logout'>
 								Logout
-							</NavLink>
+							</NavLink> */}
 						</li>
 						<li className='nav-item'>
 							<NavLink className='nav-link' to='/profile'>
@@ -39,4 +41,6 @@ export default function Navbar() {
 			</div>
 		</nav>
 	);
-}
+};
+
+export default Navbar;

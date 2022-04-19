@@ -3,7 +3,7 @@ import React, { useCallback, useContext, useEffect } from 'react';
 import { UserContext } from '../context/UserContext';
 import Loader from './Loader';
 
-const Welcome = () => {
+const Logout = () => {
 	const [userContext, setUserContext] = useContext(UserContext);
 
 	const fetchUserDetails = useCallback(() => {
@@ -26,7 +26,9 @@ const Welcome = () => {
 					// Edge case: when the token has expired.
 					// This could happen if the refreshToken calls have failed due to network error or
 					// User has had the tab open from previous day and tries to click on the Fetch button
-					window.location.reload();
+					// console.log('Logout.js: 401 Unauthorized');
+					localStorage.removeItem('');
+					window.location.replace('/');
 				} else {
 					setUserContext((oldValues) => {
 						return { ...oldValues, details: null };
@@ -43,11 +45,18 @@ const Welcome = () => {
 		}
 	}, [userContext.details, fetchUserDetails]);
 
-	const refetchHandler = () => {
-		// set details to undefined so that spinner will be displayed and
-		// fetchUserDetails will be invoked from useEffect
-		setUserContext((oldValues) => {
-			return { ...oldValues, details: undefined };
+	const logoutHandler = () => {
+		fetch(process.env.REACT_APP_API_ENDPOINT + 'users/logout', {
+			credentials: 'include',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${userContext.token}`,
+			},
+		}).then(async (response) => {
+			setUserContext((oldValues) => {
+				return { ...oldValues, details: undefined, token: null };
+			});
+			window.localStorage.setItem('logout', Date.now());
 		});
 	};
 
@@ -57,19 +66,13 @@ const Welcome = () => {
 		<Loader />
 	) : (
 		<Card>
-			<div className='user-details'>
-				<p>
-					{' '}
-					Welcome <strong>{userContext.details.firstName}</strong>!
-				</p>
-				<div className='user-actions'>
-					<Button variant='primary' onClick={refetchHandler}>
-						Refresh
-					</Button>
-				</div>
+			<div className='user-actions'>
+				<Button variant='primary' onClick={logoutHandler}>
+					Logout
+				</Button>
 			</div>
 		</Card>
 	);
 };
 
-export default Welcome;
+export default Logout;

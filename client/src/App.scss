@@ -4,28 +4,5 @@
 @import 'styles/structure';
 @import 'styles/nav';
 @import 'styles/gallery';
-
-/* ... */
-.loader {
-  display: flex;
-  justify-content: center;
-  margin: 100px auto;
-}
-
-.highlight {
-  display: inline;
-  background: #333;
-  color: aliceblue;
-  padding: 2px 6px;
-}
-
-/* ... */
-.user-details {
-  display: flex;
-  justify-content: space-between;
-}
-
-.user-actions {
-  display: flex;
-  flex-direction: column;
-}
+@import 'styles/components';
+@import 'styles/user';
