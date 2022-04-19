@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import WebtoonListHeading from '@Webtoon_Components/WebtoonListHeading';
-import Welcome from '@Components/Welcome';
+import Welcome from '@User_Components/Welcome';
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const Webtoon = (props) => (

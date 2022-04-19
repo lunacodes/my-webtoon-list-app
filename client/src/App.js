@@ -7,17 +7,17 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import { Col, Row } from 'reactstrap';
 import './App.scss';
 
-import LoginCard from '@Components/Login/LoginCard';
+import LoginCard from '@Auth_Components/LoginCard';
 import Loader from '@Components/Loader';
 
 import NotFoundPage from '@Components/NotFoundPage';
 import Navbar from '@Components/Navbar';
-import NavbarNoLogout from '@Components/Navbar';
-import WebtoonGalleryList from '@Components/Webtoons/Gallery/WebtoonGalleryList';
-import UserWebtoonList from '@Components/Webtoons/User/WebtoonList';
-import UserEditWebtoon from '@Components/Webtoons/User/EditWebtoon';
-import UserAddWebtoon from '@Components/Webtoons/User/AddWebtoon';
-import Register from '@Components/User/Register';
+import HeaderLogo from '@Components/SiteHeader';
+import WebtoonGalleryList from '@Webtoon_Components/Gallery/WebtoonGalleryList';
+import UserWebtoonList from '@Webtoon_Components/User/WebtoonList';
+import UserEditWebtoon from '@Webtoon_Components/User/EditWebtoon';
+import UserAddWebtoon from '@Webtoon_Components/User/AddWebtoon';
+import Register from '@User_Management/Register';
 
 const App = () => {
 	const [userContext, setUserContext] = useContext(UserContext);
@@ -65,6 +65,7 @@ const App = () => {
 
 	return userContext.token === null ? (
 		<div>
+			<HeaderLogo />
 			<main className='container site-inner'>
 				<Row>
 					<Col sm='6'>
@@ -90,7 +91,9 @@ const App = () => {
 			</main>
 		</div>
 	) : (
-		<Loader />
+		<main className='container site-inner'>
+			<Loader />
+		</main>
 	);
 };
 

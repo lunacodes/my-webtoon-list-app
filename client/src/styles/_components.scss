@@ -1,8 +1,10 @@
 // Loader Icon
-.loader {
-  display: flex;
-  justify-content: center;
-  margin: 100px auto;
+.site-inner {
+  .loader {
+    display: flex;
+    justify-content: center;
+    margin: 100px auto;
+  }
 }
 
 // Text highlight
