@@ -319,9 +319,14 @@ module.exports = function (webpackEnv) {
 				}),
 				...(modules.webpackAliases || {}),
 				'@Components': path.resolve(__dirname, '../src/components/'),
+				'@Auth_Components': path.resolve(__dirname, '../src/components/Auth/'),
 				'@User_Components': path.resolve(
 					__dirname,
 					'../src/components/Webtoons/User/'
+				),
+				'@User_Management': path.resolve(
+					__dirname,
+					'../src/components/UserManagement/'
 				),
 				'@Webtoon_Components': path.resolve(
 					__dirname,

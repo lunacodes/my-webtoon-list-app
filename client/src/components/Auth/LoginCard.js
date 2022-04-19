@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from './Login';
-import Register from '@Components/User/Register';
+import Register from '@User_Management/Register';
+
 import {
 	Col,
 	Nav,
