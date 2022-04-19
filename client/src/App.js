@@ -12,6 +12,7 @@ import Loader from '@Components/Loader';
 
 import NotFoundPage from '@Components/NotFoundPage';
 import Navbar from '@Components/Navbar';
+import NavbarNoLogout from '@Components/Navbar';
 import WebtoonGalleryList from '@Components/Webtoons/Gallery/WebtoonGalleryList';
 import UserWebtoonList from '@Components/Webtoons/User/WebtoonList';
 import UserEditWebtoon from '@Components/Webtoons/User/EditWebtoon';
@@ -64,7 +65,6 @@ const App = () => {
 
 	return userContext.token === null ? (
 		<div>
-			{/* <Logout /> */}
 			<main className='container site-inner'>
 				<Row>
 					<Col sm='6'>

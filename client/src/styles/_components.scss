@@ -17,3 +17,15 @@
 .card {
   border: 0;
 }
+
+.login-card {
+  .nav-wrap,
+  .top-nav,
+  .nav-item {
+    background: white;
+
+    a {
+      color: #0a58ca;
+    }
+  }
+}
